@@ -1,0 +1,42 @@
+
+<label id="minutes2">000</label>	:	<label id="seconds2">000</label>
+
+
+<script type="text/javascript">
+
+	var minutesLabel 	= document.getElementById("minutes2");
+	
+	var secondsLabel 	= document.getElementById("seconds2");
+	
+	var totalSeconds 	= 0;
+	
+	setInterval(setTime , 50);
+	
+	function setTime() {
+	
+		++totalSeconds;
+		
+		secondsLabel.innerHTML 		= 		pad(totalSeconds);
+		
+	}
+	
+	
+	
+	function pad(val) {
+		
+	  	var valString  =  val + "";
+	  	  	
+	  	if (valString.length < 2) {
+	    
+	  		return "00"  +  valString;
+	  	} 
+	  	else if(valString.length < 3) {
+	    	return  "0"  +	valString;
+	  	}
+	  	else {
+	    	return valString;
+	  	}
+	}
+	
+	
+</script>

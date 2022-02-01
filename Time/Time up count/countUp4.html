@@ -1,0 +1,24 @@
+
+<label id="minutes2">count time</label>	:	<label id="seconds2">0</label>
+
+
+<script type="text/javascript">
+
+
+	
+	var secondsLabel 	= 	document.getElementById("seconds2");
+	
+	var totalSeconds 	= 	0;
+	
+	
+	setInterval(setTime , 1000);
+	
+	function setTime() {
+	
+		
+		secondsLabel.innerHTML 		= 		++totalSeconds;
+		
+	}
+	
+	
+</script>

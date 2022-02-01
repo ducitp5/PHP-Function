@@ -1,0 +1,16 @@
+.cel{
+	color: #F00;
+	background-color: #0F0;
+	border-top-style: dotted;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-top-color: #0F0;
+	border-right-color: #0F0;
+	border-bottom-color: #0F0;
+	border-left-color: #0F0;
+}
+.cel2 {
+	color: #3F0;
+	background-color: #F0F;
+}
