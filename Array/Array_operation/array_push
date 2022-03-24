@@ -1,0 +1,57 @@
+
+<?php
+
+$stack = array("orange", "banana");
+
+array_push($stack, "apple", "default");
+
+print_r($stack);
+
+$a  =   $stack[3];
+
+echo $a ."\n";              // default
+
+$a  =   4;
+
+echo $a ."\n";              // 4
+
+print_r($stack);            // default
+
+// -----------------------
+
+// $a  =   &$stack[3];
+
+// echo '$a = ' .$a ."\n";         // default
+
+// $a  =   5;
+
+// echo '$a = ' .$a ."\n";         // 5
+
+// print_r($stack);                // 5
+
+// -----------------------
+
+// $a  =   &$stack[3];
+
+// echo '$a = ' .$a ."\n";         // default
+
+// $stack[3]   =   'new';
+
+// print_r($stack);                // new
+
+// echo '$a = ' .$a ."\n";         // new
+
+// -----------------------
+
+// $a  =   $stack[3];
+
+// echo '$a = ' .$a ."\n";         // default
+
+// $stack[3]   =   'new';
+
+// print_r($stack);                // new
+
+// echo '$a = ' .$a ."\n";         // default
+
+
+?>
