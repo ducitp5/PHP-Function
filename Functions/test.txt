@@ -1,0 +1,1 @@
+Example #1 stream_get_contents() example
