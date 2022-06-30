@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/PHP-Function.iml" filepath="$PROJECT_DIR$/.idea/PHP-Function.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../chaodinhduongcaocapsansan/.idea/chaodinhduongcaocapsansan.iml" filepath="$PROJECT_DIR$/../chaodinhduongcaocapsansan/.idea/chaodinhduongcaocapsansan.iml" />
     </modules>
   </component>
 </project>
