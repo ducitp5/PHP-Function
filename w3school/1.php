@@ -12,7 +12,7 @@
 <script>
     var myObject = new Vue({
         el: '#app',
-        data: {message: 'Hello Vue!'}
+        data: { message: 'Hello Vue!' }
     })
 </script>
 
