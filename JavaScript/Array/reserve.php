@@ -12,6 +12,7 @@
     const fruits = ["Banana", "Orange", "Apple", "Mango"];
     document.getElementById("demo").innerHTML = fruits.reverse();
     console.log(fruits);
+    console.log(fruits.join('-'));
 </script>
 
 </body>
