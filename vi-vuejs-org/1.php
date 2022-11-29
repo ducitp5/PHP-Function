@@ -22,7 +22,7 @@
 <!--<hr>-->
 <!--<div id="app-22">-->
 <!--  <span v-bind:title="message">-->
-<!--    Rê chuột lên đây một vài giây để xem thuộc tính `title` được bind! 333333 {{ message}}-->
+<!--    Rê chuột lên đây một vài giây để xem thuộc tính `title` được bind! 333333 {{ message }}-->
 <!--  </span>-->
 <!--</div>-->
 <!---->
@@ -30,7 +30,7 @@
 <!--    var app2 = new Vue({-->
 <!--        el: '#app-22',-->
 <!--        data: {-->
-<!--            message: 'Bạn đã mở trang này vào ' + new Date().toLocaleString()-->
+<!--            message: 'Bạn đã mở trang này vào ' + (new Date()).toLocaleString()-->
 <!--        }-->
 <!--    })-->
 <!--</script>-->
@@ -58,10 +58,12 @@
 <!--</div>-->
 <!---->
 <!--<script>-->
+<!---->
 <!--    var app5 = new Vue({-->
 <!--        el: '#app-5',-->
 <!--        data: {-->
-<!--            message: 'qua lại khách chờ sông lặng sóng'-->
+<!--            message: 'khách chờ sông lặng sóng',-->
+<!--            myduc : '123456'-->
 <!--        },-->
 <!--        methods: {-->
 <!--            reverseMessage: function () {-->
@@ -69,6 +71,8 @@
 <!--            }-->
 <!--        }-->
 <!--    })-->
+<!---->
+<!--    console.log(app5)-->
 <!--</script>-->
 
 
@@ -85,6 +89,8 @@
 <!--            message: 'Hãy sửa thông điệp này'-->
 <!--        }-->
 <!--    })-->
+<!---->
+<!--    console.log(app6)-->
 <!--</script>-->
 
 
@@ -92,17 +98,13 @@
 <div id="app-7">
     <p>Những thứ họ mua:</p>
     <ol>
-
-<!--          Ở đây chúng ta cung cấp một object "todo" cho mỗi component-->
-<!--          "todo-item". Bằng cách này nội dung của từng component trở nên động.-->
-<!--          Mỗi component cũng sẽ nhận một thuộc tính "key". Chúng ta sẽ-->
-<!--          nói thêm về thuộc tính này sau.-->
-
         <todo-item
             v-for="item in groceryList"
-            v-bind:todo2="item"
+            v-bind:todo2="item.text"
         >
+
         </todo-item>
+
     </ol>
 </div>
 
@@ -119,9 +121,12 @@
                 { id: 0, text: 'Cà pháo' },
                 { id: 1, text: 'Mắm tôm' },
                 { id: 2, text: 'Miễn ăn được là được' }
-            ]
+            ],
+            myDuc : null
         }
     })
+
+    console.log(app7);
 </script>
 
 </body>

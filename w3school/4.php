@@ -8,7 +8,7 @@
 <div id="app">
     <ul>
         <li v-for="$x in todos">
-            {{ $x.text }}
+            {{ $x.text }} - {{ $x.key}}
         </li>
     </ul>
 </div>
@@ -18,9 +18,9 @@
         el: '#app',
         data: {
             todos: [
-                { text: 'Learn JavaScript' },
-                { text: 'Learn Vue.js' },
-                { text: 'Build Something Awesome' }
+                { text: 'Learn JavaScript', key : "hoc di" },
+                { text: 'Learn Vue.js',   },
+                { text: 'Build Something Awesome', key : "hoc di"  }
             ]
         }
     })
