@@ -21,11 +21,11 @@
                             v-bind:aria-label="item.done ? 'Undone' : 'Done'"
                             v-bind:title="item.done ? 'Undone' : 'Done'">
 
-                        <i aria-hidden="true" class="material-icons">{{ item.done ? 'check_box' : 'check_box_outline_blank' }}</i>
+                        <i aria-hidden="true">{{ item.done ? 'check_box' : 'check_box_outline_blank' }}</i>
                     </button>
 
                     <button class="btn-picto" type="button" v-on:click="deleteItemFromList(item)" aria-label="Delete" title="Delete">
-                        <i aria-hidden="true" class="material-icons">delete</i>
+                        <i aria-hidden="true">delete</i>
                     </button>
                 </div>
             </li>
@@ -41,7 +41,7 @@
 
     <p v-else class="emptylist">Your todo list is empty.</p>
 
-    <form name="newform" v-on:submit.prevent="addItem">
+    <form v-on:submit.prevent="addItem">
         <label for="newitem">Add to the todo list</label>
         <input type="text" name="newitem" id="newitem" v-model="newitem">
         <button type="submit">Add item</button>
