@@ -1,34 +1,16 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
 
-<anchored-heading :level="5">Hello world 33333!</anchored-heading>
-
-<!--<script type="text/x-template" id="anchored-heading-template">-->
-<!--    <h1 v-if="level === 1">-->
-<!--        <slot></slot>-->
-<!--    </h1>-->
-<!--    <h2 v-else-if="level === 2">-->
-<!--        <slot></slot>-->
-<!--    </h2>-->
-<!--    <h3 v-else-if="level === 3">-->
-<!--        <slot></slot>-->
-<!--    </h3>-->
-<!--    <h4 v-else-if="level === 4">-->
-<!--        <slot></slot>-->
-<!--    </h4>-->
-<!--    <h5 v-else-if="level === 5">-->
-<!--        <slot></slot>-->
-<!--    </h5>-->
-<!--    <h6 v-else-if="level === 6">-->
-<!--        <slot></slot>-->
-<!--    </h6>-->
-<!---->
-<!--</script>-->
-
+<div id = "component_test">
+    <anchored-heading :level="1">Hello world 33333!</anchored-heading>
+</div>
 
 <script>
 
     var getChildrenTextContent = function (children) {
+
+        console.log('con ban - ', children);
+
         return children.map(function (node) {
             return node.children
                 ? getChildrenTextContent(node.children)
@@ -43,27 +25,72 @@
             var headingId = getChildrenTextContent(this.$slots.default)
                 .toLowerCase()
                 .replace(/\W+/g, '-')
-                .replace(/(^\-|\-$)/g, '')
+                .replace(/(^\-|\-$)/g, '');
 
+            console.log('slot - ', this.$slots.default);
 
             return createElement(
-                'h' + this.level,
+                'div',
                 [
-                    createElement('a', {
-                        attrs: {
-                            name: headingId,
-                            href: '#' + headingId
-                        }
-                    }, this.$slots.default)
+                    createElement(
+                        'a',
+                        {
+                            attrs: {
+                                href: 'http://vnexpress.net'
+                            }
+                        },
+                        [
+                            createElement(
+                                'h'+ this.level,
+                                {
+                                    attrs: {
+                                        name: 'abc',
+                                    }
+                                },
+                                this.$slots.default
+                            )
+                        ]
+
+                    ),
+
+                    createElement(
+                        'hr',
+                    ),
+
+                    createElement(
+                        'h2',
+                        {
+                            attrs: {
+                                style: 'color:red;'
+                            }
+                        },
+                        this.$slots.default
+                    )
                 ]
             )
+
+            // return createElement(
+            //     'h' + this.level,
+            //     {
+            //         attrs: {
+            //             id: 123,
+            //             style: 'color:red;'
+            //         }
+            //     },
+            //     this.$slots.default
+            // )
         },
-        props: {
-            level: {
-                type: Number,
-                required: true
-            }
-        }
+        // props: {
+        //     level: {
+        //         type: Number,
+        //         required: true
+        //     }
+        // }
+        props : ['level']
     })
+
+    new Vue({
+        el: '#component_test'
+    });
 
 </script>
