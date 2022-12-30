@@ -7,7 +7,7 @@
 
 <script>
 
-import Counter from 'Counter.vue';
+import Counter from 'Counter.php';
 
 export default {
   components: {
