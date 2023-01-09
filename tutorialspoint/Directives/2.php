@@ -12,22 +12,26 @@
 
 <script type = "text/javascript">
 
-    Vue.directive("changestyle",{
+    vd = Vue.directive(
+        "changestyle",
+        {
+            bind(e1,binding, vnode) {
 
-        bind(e1,binding, vnode) {
+                console.log('el - ', e1);
+                console.log('binding - ', binding.value);
+                console.log('vnode - ', vnode);
 
-            console.log(e1);
-            console.log(binding.value.color);
-            console.log(vnode);
-
-            e1.style.color      = binding.value.color;
-            e1.style.fontSize   = "30px";
+                e1.style.color      = binding.value.color;
+                e1.style.fontSize   = "30px";
+            }
         }
-    });
+    );
 
     var vm = new Vue({
         el: '#databinding',
     });
+
+    console.log('vd - ', vd)
 </script>
 </body>
 </html>

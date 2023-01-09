@@ -28,6 +28,7 @@
     console.log(vm.aSquare);  // -> 4
     vm.aSquare = 3;
     console.log(vm.a);       // -> 6
+    console.log(vm.aSquare);  // -> 36
     console.log(vm.aSum); // -> 8
 </script>
 </body>
