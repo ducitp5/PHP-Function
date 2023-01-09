@@ -15,14 +15,14 @@
         "changestyle2",
         {
             bind(e1) {
-                console.log(e1);
+                console.log('1 --', e1);
                 e1.style.color = "blue";
                 e1.id = "abc";
             }
         }
     );
 
-    console.log($vd);
+    console.log('vd - ', $vd);
 
     var vm = new Vue({
         el: '#databinding',

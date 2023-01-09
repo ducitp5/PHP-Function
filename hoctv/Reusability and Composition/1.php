@@ -93,21 +93,30 @@
 
 
     // chèn một handler cho option tùy biến `myOption`
-    Vue.mixin({
+    var $mix = Vue.mixin({
 
         created: function () {
 
             var myOption = this.$options.myOption2
 
+            console.log(1234, this.$options, 1111, this)
             if (myOption) {
-                console.log(myOption)
+                console.log('option is - ' +myOption)
             }
         }
     })
 
-    new Vue({
-        myOption2: 'hello em iu!'
+    console.log('mix - ', $mix)
+
+    var $vm = new Vue({
+        myOption2: 'hello em iu!',
+
+        created: function (){
+
+            console.log(333, this.myOption2, 4444)
+        }
     })
     // => "hello!"
 
+    // console.log($mix, $vm, 111)
 </script>

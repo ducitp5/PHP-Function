@@ -8,7 +8,7 @@
 <div id = "component_test">
 
     <testcomponent :elementtype = "'div, red , 25, div1'"><b> Hello Jai </b></testcomponent>
-<!--    <testcomponent :elementtype = "'h3,green,25,h3tag'">Hello Roy</testcomponent>-->
+    <testcomponent :elementtype = "'h3,green,25,h3tag'">Hello Roy</testcomponent>
 <!--    <testcomponent :elementtype = "'p,blue,25,ptag'">Hello Ria</testcomponent>-->
 <!--    <testcomponent :elementtype = "'div,green,25,divtag'">Hello Ben</testcomponent>-->
 </div>
