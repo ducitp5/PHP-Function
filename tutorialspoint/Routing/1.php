@@ -19,43 +19,44 @@
 
 <script type = "text/javascript">
 
+    var routes = [
+        {
+            path: '/route1',
+            meta: {
+                requiresAuth: true
+            },
+            component: {
+                template:
+                    '<div style = "border-radius:20px;background-color:cyan;width:200px;height:50px;margin:10px;font-size:25px;padding:10px;">' +
+                    'This is router 1' +
+                    '</div>'
+            }
+        },
+
+        {
+            path: '/route2',
+            component: {
+                template:
+                    '<div style = "border-radius:20px;background-color:green;width:200px;height:50px;margin:10px;font-size:25px;padding:10px;">' +
+                    'This is router 2' +
+                    '</div>'
+            }
+        }
+    ];
+
+    const $router = new VueRouter({
+        routes // short for `routes: routes`
+    });
+
     var vm = new Vue({
         el: '#app',
 
-        // router : $router,
-
-        router : new VueRouter({
-            routes : [
-                {
-                    path: '/route1',
-                    meta: {
-                        requiresAuth: true
-                    },
-                    component: {
-                        template:
-                            '<div style = "border-radius:20px;background-color:cyan;width:200px;height:50px;margin:10px;font-size:25px;padding:10px;">' +
-                                'This is router 1' +
-                            '</div>'
-                    }
-                },
-
-                {
-                    path: '/route2',
-                    component: {
-                        template:
-                            '<div style = "border-radius:20px;background-color:green;width:200px;height:50px;margin:10px;font-size:25px;padding:10px;">' +
-                                'This is router 2' +
-                            '</div>'
-                    }
-                }
-            ],
-        }),
-
+        router : $router
 
     });
 
-    console.log(vm.$router.options.routes[0])
-    console.log(vm.$el, vm)
+    // console.log(vm.$router.options.routes[0])
+    // console.log(vm.$el, vm)
 
 </script>
 
