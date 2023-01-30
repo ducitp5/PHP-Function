@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/PHP-Function.iml" filepath="$PROJECT_DIR$/.idea/PHP-Function.iml" />
       <module fileurl="file://$PROJECT_DIR$/../chaodinhduongcaocapsansan/.idea/chaodinhduongcaocapsansan.iml" filepath="$PROJECT_DIR$/../chaodinhduongcaocapsansan/.idea/chaodinhduongcaocapsansan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../tutorial_vue/tutorial_vue2/.idea/tutorial_vue2.iml" filepath="$PROJECT_DIR$/../tutorial_vue/tutorial_vue2/.idea/tutorial_vue2.iml" />
     </modules>
   </component>
 </project>
