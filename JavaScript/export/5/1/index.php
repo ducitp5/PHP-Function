@@ -1,0 +1,2 @@
+<script type="module" src="1.js"></script>
+<script type="module" src="2.js"></script>
