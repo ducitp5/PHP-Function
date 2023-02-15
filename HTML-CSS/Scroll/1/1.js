@@ -1,5 +1,7 @@
 ;(function($) {
 
+
+    console.log(6666666666)
     $.fn.fixMe = function() {
 
         return this.each(function() {
@@ -51,6 +53,7 @@
 
 $(document).ready(function(){
 
+    console.log(9999999999)
     $("table").fixMe();
 
     // $(".up").click(function() {
