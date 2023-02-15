@@ -10,7 +10,7 @@
                 $t_fixed;
 
             function init() {
-                $this.wrap('<div class="container" />');
+                $this.wrap('<div class="" />');
                 $t_fixed = $this.clone();
                 $t_fixed.find("tbody").remove().end().addClass("fixed").insertBefore($this);
                 resizeFixed();
