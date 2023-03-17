@@ -11,24 +11,45 @@
 </head>
 <body>
 	<h3>Example 1</h3>
+
 	<select id="sel_1" style="width:16em" multiple>
 	</select>
+
 	<script>
 		var mydata = [
-		   {id:1, text:"USA", inc:[
-		      {text:"west", inc:[
-		         {id:111, text:"California", inc:[
-		            {id:1111, text:"Los Angeles", inc:[
-		               {id:11111, text:"Hollywood"}
-		            ]},
-		            {id:1112, text:"San Diego"}
-		         ]},
-		         {id:112, text:"Oregon"}
-		      ]}
-		   ]},
-		   {id:2, text:"India"},
-		   {id:3, text:"中国"}
+			{
+				id:1,
+			   	text:"USA",
+			   	inc:[
+					{	text:"west",
+						inc:[
+				         	{	id:111,
+								text:"California",
+								inc:[
+						            {	id:1111,
+										text:"Los Angeles",
+										inc:[
+						               		{	id:11111,
+												text:"Hollywood"
+										   	}
+		            					]
+									},
+						            {	id:1112,
+										text:"San Diego"
+									}
+		         				]
+							},
+			         		{	id:112,
+								text:"Oregon"
+							}
+		      			]
+					}
+		   		]
+			},
+		   	{	id:2, 	text:"India"},
+		   	{	id:3, 	text:"中国"}
 		];
+
 		$("#sel_1").select2ToTree({treeData: {dataArr: mydata}, maximumSelectionLength: 3});
 	</script>
 
@@ -36,12 +57,12 @@
 
 	<h3>Example 2</h3>
 	<select id="sel_2" style="width:8em">
-		<option value="1" class="l1 non-leaf">opt_1</option>
-		<option value="11" data-pup="1" class="l2 non-leaf">opt_11</option>
-		<option value="111" data-pup="11" class="l3">opt_111</option>
-		<option value="12" data-pup="2" class="l2">opt_12</option>
-		<option value="2" class="l1">opt_2</option>
-		<option value="3" class="l1">opt_3</option>
+		<option value="1" 	class="l1 non-leaf"					>opt_1</option>
+		<option value="11"  class="l2 non-leaf" data-pup="1"	>opt_11</option>
+		<option value="111" class="l3"			data-pup="11"	>opt_111</option>
+		<option value="12" 	class="l2"			data-pup="2" 	>opt_12</option>
+		<option value="2" 	class="l1"							>opt_2</option>
+		<option value="3" 	class="l1"							>opt_3</option>
 	</select>
 	<script>
 		$("#sel_2").select2ToTree();
@@ -52,6 +73,7 @@
 	<h3>Example 3</h3>
 	<select id="sel_3" style="width:16em" multiple>
 	</select>
+
 	<script>
 		var ind = mydata[1];
 		ind.inc = [{text:"north", inc:[]}];
@@ -79,17 +101,45 @@
 	</select>
 	<script>
 		var mydata_path = [
-			{"organization": {"shortDescription":"The company A", "idCompanyOrganization":"1"}, "nodes":[
-				{"organization": {"shortDescription":"R & D", "idCompanyOrganization":"1_1"}, "nodes":[]
+			{
+				"organization":
+				{
+					"shortDescription"		:"The company A",
+					"idCompanyOrganization"	:"1"
 				},
-				{"organization": {"shortDescription":"Marketing", "idCompanyOrganization":"1_2"},	"nodes":[
-					{"organization": {"shortDescription":"Asia",	"idCompanyOrganization":"1_2_1"}, "nodes":[
-						{"organization": {"shortDescription":"South-east Asia", "idCompanyOrganization":"1_2_2"}, "nodes":[]
-						}
+				"nodes":[
+					{	"organization"	:
+						{
+							"shortDescription"		:"R & D",
+							"idCompanyOrganization"	:"1_1"
+						},
+						"nodes":[]
+					},
+					{	"organization"	:
+						{
+							"shortDescription"		:"Marketing",
+							"idCompanyOrganization"	:"1_2"
+						},
+						"nodes":[
+							{
+								"organization"	:
+								{
+									"shortDescription"		:"Asia",
+									"idCompanyOrganization"	:"1_2_1"
+								},
+								"nodes":[
+									{
+										"organization"		:
+										{
+											"shortDescription"		:"South-east Asia",
+											"idCompanyOrganization"	:"1_2_2"
+										},
+										"nodes":[]
+									}
+								]
+							}
 						]
 					}
-					]
-				}
 				]
 			}
 		];
