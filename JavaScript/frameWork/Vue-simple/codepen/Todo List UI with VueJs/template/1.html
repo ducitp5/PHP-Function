@@ -1,0 +1,31 @@
+<button onclick="showContent()">Show hidden content</button>
+
+<template>
+    <h2>Flower</h2>
+    <img src="img_white_flower.jpg" width="214" height="204" alt="">
+</template>
+
+<template>
+    <h2>Flower2</h2>
+    <img src="img_white_flower.jpg" width="214" height="204" alt="">
+</template>
+
+<div>
+    <h2>Flower div</h2>
+    <img src="img_white_flower.jpg" width="214" height="204" alt="">
+</div>
+
+<script>
+
+    function showContent() {
+        var temp = window.document.getElementsByTagName("template")[1];
+        var clon = temp.content.cloneNode(true);
+        document.body.appendChild(clon);
+
+        console.log(document);
+        console.log(document.body);
+        console.log(temp.content)
+        console.log(document.content);
+
+    }
+</script> 
