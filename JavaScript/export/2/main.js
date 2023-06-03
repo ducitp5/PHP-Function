@@ -1,8 +1,8 @@
 import * as ns from "./message.js";
 
-console.log(ns);
+console.log(22222, ns);
 
-console.log(ns.default())
+console.log(333333, ns.default())
 // import { foo, bar } from  "./mod1";
 //
 // try{
