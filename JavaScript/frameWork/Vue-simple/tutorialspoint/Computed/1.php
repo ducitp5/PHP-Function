@@ -9,11 +9,9 @@
     new Vue({
         el: '#app',
         name: 'HelloWorld',
-        data () {
-            return {
-                firstName: 'Quang',
-                lastName: 'Phu'
-            }
+        data :{
+            firstName: 'Quang',
+            lastName: 'Phu'
         },
         methods: {
             changeNameSetter () {
@@ -23,6 +21,7 @@
         computed: {
             fullName: {
                 get () {
+                    console.log(1111, this);
                     alert("Assembling full name...");
                     return `${this.firstName} ${this.lastName}`
                 },

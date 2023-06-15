@@ -4,9 +4,14 @@
     <script type = "text/javascript" src = "../js/vue.js"></script>
 </head>
 <body>
+
+<div id="abc"></div>
+
 <script type = "text/javascript">
     var vm = new Vue({
+        el : "#abc",
         data: { a: 2 },
+
         computed: {
 
             // get only, just need a function

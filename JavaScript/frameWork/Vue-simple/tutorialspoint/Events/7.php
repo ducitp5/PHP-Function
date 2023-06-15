@@ -26,13 +26,6 @@
                 '<span style = "font-size:25px;">{{ item2 }}</span>' +
             '</button>',
 
-
-        data: function () {
-            return {
-                counter: 0
-            }
-        },
-
         props:['item2'],
 
         methods: {

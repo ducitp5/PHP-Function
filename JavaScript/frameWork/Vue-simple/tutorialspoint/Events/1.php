@@ -25,10 +25,13 @@
         methods : {
             displaynumbers : function(event) {
                 console.log(event);
+                console.log(11122, this);
                 return this.total =  this.num1+ this.num2;
             }
         },
     });
+
+    console.log(vm);
 </script>
 </body>
 </html>

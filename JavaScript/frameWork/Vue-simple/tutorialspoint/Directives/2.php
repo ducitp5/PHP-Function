@@ -15,14 +15,14 @@
     vd = Vue.directive(
         "changestyle",
         {
-            bind(e1,binding, vnode) {
+            bind(e1l,binding2, vnode) {
 
-                console.log('el - ', e1);
-                console.log('binding - ', binding.value);
+                console.log('el - ', e1l);
+                console.log('binding - ', binding2);
                 console.log('vnode - ', vnode);
 
-                e1.style.color      = binding.value.color;
-                e1.style.fontSize   = "30px";
+                e1l.style.color      = binding2.value.color;
+                e1l.style.fontSize   = "30px";
             }
         }
     );

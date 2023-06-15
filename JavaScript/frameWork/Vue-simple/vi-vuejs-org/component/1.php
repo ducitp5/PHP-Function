@@ -127,6 +127,7 @@
 <div id="blog-posts-events-demo2">
     <div style='color: blueviolet'
          :style='{ fontSize: postFontSize + "em", color:  myColor}' >
+
         <blog-post
                 v-for="post in posts"
                 v-bind:keyv="post.id"
@@ -174,7 +175,7 @@
             posts: [
                 {   id: 1,
                     title: 'Giới thiệu về Vue',
-                    content : 'content - ' +this.id
+                    content : 'content - '
                 },
             ],
             postFontSize: 1,

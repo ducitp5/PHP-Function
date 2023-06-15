@@ -6,7 +6,7 @@
 <body>
 
 <div id = "databinding">
-    <component2 v-bind:is = "view2"></component2>
+    <component3 v-bind:is = "view2"></component3>
 </div>
 
 <script type = "text/javascript">
@@ -14,10 +14,10 @@
     var vm = new Vue({
         el: '#databinding',
         data: {
-            view2: 'component1'
+            view2: 'component2'
         },
         components: {
-            'component1': {
+            'component2': {
                 template: '<div><span style = "font-size:35;color:red;">Dynamic Component</span></div>'
             }
         }

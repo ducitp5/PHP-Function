@@ -103,7 +103,8 @@
 
 <div id="app">
 
-    <child v-bind:my_say3="222 "></child>
+    <child my_say3="111 "></child>
+    <child v-bind:my_say3=" 222 "></child>
     <child my_say3="abc "></child>
 </div>
 

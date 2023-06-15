@@ -8,6 +8,7 @@
     <p>{{ counterMethod }}</p> <br/>
 
     {{ printTextMethod() }}
+    {{ printTextMethod2() }}
     {{ printTextComputed }}
 </div>
 
@@ -23,11 +24,15 @@
         methods: {
             printTextMethod () {
                 console.log('counter printed from method:', this.counterMethod)
+            },
+            printTextMethod2 () {
+                console.log('printTextMethod2')
             }
         },
         computed: {
             printTextComputed () {
-                console.log('counter printed from computed:', this.counterComputed)
+                console.log('counter printed from computed:', this.counterComputed);
+                return this.counterComputed;
             }
         }
     })

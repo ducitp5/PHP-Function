@@ -6,6 +6,8 @@
     <alert-box>
         sin chao em
     </alert-box>
+
+    <alert-box></alert-box>
 </div>
 
 

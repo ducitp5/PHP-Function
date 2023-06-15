@@ -6,10 +6,10 @@
 <body>
 
     <div id = "component_test">
-        <testcomponent></testcomponent>
+        <testcomponent v-bind:c_name="vd_name"></testcomponent>
     </div>
     <div id = "component_test1">
-        <testcomponent></testcomponent>
+        <testcomponent v-bind:c_name="vd_name"></testcomponent>
     </div>
 
     <script type = "text/javascript" src = "vue_component.js"></script>
