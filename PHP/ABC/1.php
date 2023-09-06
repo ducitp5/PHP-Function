@@ -34,8 +34,8 @@
 		</div>
 		<div class="line"></div>
 	</div>
-	
-	
+
+
 
 	<!-- Tab content -->
 	<div class="tab-content">
@@ -82,7 +82,7 @@ const line = $(".tabs .line");
 line.style.left = tabActive.offsetLeft + "px";
 line.style.width = tabActive.offsetWidth + "px";
 
-tabs.forEach((tab, index) = {
+tabs.forEach((index) = {
   const pane = panes[index];
 
   tab.onclick = function () {
