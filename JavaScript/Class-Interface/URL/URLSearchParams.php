@@ -65,7 +65,7 @@
     console.log('-------- entries -------');
     console.log(entries);
     for(const entry of entries) {
-        console.log(`${entry[0]}: ${entry[1]}`);
+        console.log(entry);
     }
 
 </script>
