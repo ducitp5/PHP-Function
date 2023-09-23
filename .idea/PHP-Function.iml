@@ -7,5 +7,6 @@
     <orderEntry type="module" module-name="chaodinhduongcaocapsansan" />
     <orderEntry type="module" module-name="tutorial_vue2" />
     <orderEntry type="library" name="jquery-3.7.0" level="application" />
+    <orderEntry type="library" name="jquery-tablesortable" level="application" />
   </component>
 </module>
