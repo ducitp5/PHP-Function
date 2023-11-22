@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>find demo</title>
-        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<!--        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>-->
 </head>
 <body>
 
