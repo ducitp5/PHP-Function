@@ -6,3 +6,8 @@ const message = () => {
 };
 
 export default message;
+
+let $kk = 8;
+const $gg = "GG";
+let $bb = "BB";
+export { $kk, $gg }
