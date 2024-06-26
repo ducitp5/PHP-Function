@@ -14,11 +14,12 @@
 
     const container = document.getElementById('mydiv');
 
+    console.log(container, container.nodeType);
     console.log(ReactDOM);
 
     const root = ReactDOM.createRoot(container);
 
-    console.log(ReactDOM);
+    console.log(2222, root );
 
     root.render(<Hello />)
 </script>
