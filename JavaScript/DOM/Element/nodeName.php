@@ -16,6 +16,7 @@
 
 <script>
     const nodes = document.body.childNodes;
+    console.log(111, nodes);
     let text  = "";
 
     for (let i = 0; i < nodes.length; i++) {

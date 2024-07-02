@@ -8,5 +8,8 @@
     <orderEntry type="module" module-name="tutorial_vue2" />
     <orderEntry type="library" name="jquery-3.7.0" level="application" />
     <orderEntry type="library" name="jquery-tablesortable" level="application" />
+    <orderEntry type="library" name="react" level="application" />
+    <orderEntry type="library" name="react-dom" level="application" />
+    <orderEntry type="library" name="@babel/standalone" level="application" />
   </component>
 </module>
