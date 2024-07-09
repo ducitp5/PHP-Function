@@ -4,7 +4,7 @@
 </script>
 
 <script type="module">
-    console.log(user);
+
     try{
         console.log(user);
     }
