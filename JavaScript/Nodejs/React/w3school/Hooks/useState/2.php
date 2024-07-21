@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"> hello 333</div>
+
+<script type="text/babel">
+
+    let { useState } = React;
+
+    function Car() {
+        const [brand, setBrand] = useState("Ford");
+        const [model, setModel] = useState("Mustang");
+        const [year, setYear] = useState("1964");
+        const [color, setColor] = useState("red");
+
+        return (
+            <>
+                <h1>My {brand}</h1>
+                <p>
+                    It is a {color} {model} from {year}.
+                </p>
+            </>
+        )
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Car />);
+
+</script>
+
+</body>
+</html>
