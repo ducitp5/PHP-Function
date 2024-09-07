@@ -84,11 +84,31 @@
             document.body.classList.remove('mouse-navigation');
         }
     });
+
     window.addEventListener('click', function(e) {
+
+        // window.onerror = function (message, source, lineno, colno, error) {
+        //     console.log("Error message:", message);
+        //     console.log("Source file:", source);
+        //     console.log("Line number:", lineno);
+        //     console.log("Column number:", colno);
+        //     console.log("Error object:", error);
+        //
+        //     // Return true to prevent the default browser error handling
+        //     return true;
+        // };
+        //
+        // throw new Error("This is a test error");
+
+
+// Step 2: Intentionally throw an error to test window.onerror
+
+        console.log(1234);
         if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
             e.preventDefault();
         }
     });
+
     window.onerror = function(message, source, line, col, error) {
         var text = error ? error.stack || error : message + ' (at ' + source + ':' + line + ':' + col + ')';
         errors.textContent += text + '\n';
@@ -116,7 +136,7 @@
     class Board extends React.Component {
 
         renderSquare(i) {
-            console.log(i, this.props, this.props.squares);
+            console.log(i, this, "props", this.props, "square", this.props.squares);
             return (
                 <Square
                     value={this.props.squares[i]}
