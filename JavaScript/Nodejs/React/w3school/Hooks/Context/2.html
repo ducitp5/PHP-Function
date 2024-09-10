@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    let { useState, createContext, useContext } = React;
+
+    const $context = createContext('abc'); //abc use for what
+
+    console.log(111, $context, $context._currentValue);
+
+    function Component1() {
+        // const [user, setUser] = useState("Jesse Hall");
+
+        let $name = 'duc';
+
+        return (
+            <$context.Provider value='duc'>
+                <h1>{`Hello ${$name}!`}</h1>
+                <Component2 />
+            </$context.Provider>
+        );
+    }
+
+    function Component2() {
+        console.log(222, $context);
+
+        return (
+            <>
+                <h1>Component 2</h1>
+                <Component3 />
+            </>
+        );
+    }
+
+    function Component3() {
+        const user = useContext($context);
+        console.log(user, 333, $context);
+
+        return (
+            <>
+                <h1>Component 3</h1>
+                <h2>{`Hello ${user} again!`}</h2>
+            </>
+        );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Component1 />);
+
+</script>
+
+</body>
+</html>

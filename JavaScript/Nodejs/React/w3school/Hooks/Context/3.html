@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    const { useState, createContext, useContext } = React;
+
+    // Create a context with 'abc' as the default value
+    const MyContext = createContext('abc');
+
+    function Component1() {
+        const [name] = useState('Jesse Hall');
+
+        return (
+            // Provider overrides the context value for Component2 and its children
+            <MyContext.Provider value='duc'>
+                <h1>{`Hello ${name}!`}</h1>
+                <Component2 />
+            </MyContext.Provider>
+        );
+    }
+
+    function Component2() {
+        return (
+            <>
+                <h2>Component 2: Custom Value</h2>
+                <Component3 />
+            </>
+        );
+    }
+
+    function Component3() {
+        // Component3 uses the value from the Provider, which is 'duc'
+        const user = useContext(MyContext);
+
+        return (
+            <>
+                <h3>Component 3</h3>
+                <h4>{`Hello ${user} from the Provider!`}</h4>
+            </>
+        );
+    }
+
+    function ComponentWithoutProvider() {
+        // This component will use the default value 'abc' since it is not inside a Provider
+        const user = useContext(MyContext);
+
+        return (
+            <div>
+                <h2>Component Without Provider: Default Value</h2>
+                <h4>{`Hello ${user} from the default context!`}</h4>
+            </div>
+        );
+    }
+
+    function App() {
+        return (
+            <>
+                <Component1 />
+                <ComponentWithoutProvider />
+            </>
+        );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+
+</script>
+
+</body>
+</html>
