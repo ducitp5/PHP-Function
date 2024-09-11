@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        .App {
+            font-family: sans-serif;
+            margin-top: 83px;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        .input-item {
+            margin-top: 2%;
+        }
+        .input {
+            width: 50%;
+            padding: 5px;
+            font-size: 18px;
+        }
+        .label{
+            font-weight: 900;
+            font-size: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        .display-info {
+            display: flex;
+            justify-content: center;
+        }
+        .food-form {
+            background: #f2f2f2;
+            border-radius: 10px;
+            padding: 10px 20px 20px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    const { useState, createContext, useContext } = React;
+
+    // Create the FoodContext
+    const FoodContext = createContext();
+
+    // Provide the FoodContext using a Provider component
+    function FoodProvider({ children }) {
+        const [name, setName] = useState('Trà Xanh');
+        const [location, setLocation] = useState('Thái Nguyên');
+
+        return (
+            <FoodContext.Provider value={{ name, location, setName, setLocation, 'val' : 'duc' }}>
+                {children}
+            </FoodContext.Provider>
+        );
+    }
+
+    // FoodForm component
+    function FoodForm() {
+        // Retrieve context data
+        const $foodContext = useContext(FoodContext);
+
+        console.log('FoodForm', $foodContext);
+
+        return (
+            <div className="food-form">
+                <div className="input-item">
+                    <label className="label" style={{ marginRight: "28px" }}>Update Name: </label>
+                    <input
+                        className="input"
+                        onChange={e => $foodContext.setName(e.target.value)}
+                    />
+                </div>
+
+                <div className="input-item">
+                    <label className="label">Update Location: </label>
+                    <input
+                        className="input"
+                        onChange={e => $foodContext.setLocation(e.target.value)}
+                    />
+                </div>
+
+                <NameComponent />
+                <LocationComponent />
+            </div>
+        );
+    }
+
+    // NameComponent to display the name
+    function NameComponent() {
+        const $foodContext = useContext(FoodContext);
+
+        console.log('NameComponent - ', $foodContext);
+
+        return (
+            <div style={{ marginTop: "30px" }}>
+                <h2 className="is-size-4">
+                    <strong>Name</strong>: {$foodContext.name}
+                </h2>
+                <h2 className="is-size-4">
+                    <strong>val</strong>: {$foodContext.val}
+                </h2>
+            </div>
+        );
+    }
+
+    // LocationComponent to display the location
+    function LocationComponent() {
+        const $foodContext = useContext(FoodContext);
+
+        return (
+            <div style={{ marginTop: "30px", marginLeft: "50px" }}>
+                <h2 className="is-size-4">
+                    <strong>Location</strong>: {$foodContext.location}
+                </h2>
+            </div>
+        );
+    }
+
+    function App() {
+
+        return (
+                <FoodProvider>
+                    <FoodForm />
+                </FoodProvider>
+        );
+    }
+
+    // Render the FoodForm within the FoodProvider
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+
+    root.render(<App />);
+
+</script>
+
+</body>
+</html>
