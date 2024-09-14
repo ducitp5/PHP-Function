@@ -23,7 +23,7 @@
                         setCount((count) => count + 1);
                         // console.log(44444, count)
                     },
-                    1000
+                    1000000
                 );
                 // setCount((count) => count + 1);
                 console.log('abc')
@@ -31,7 +31,12 @@
             }
         );
 
-        return <h1>I've rendered {count} times!</h1>;
+        return (
+            <>
+                { console.log('begin render - ', count)}
+                <h1>I've rendered {count} times!</h1>
+            </>
+        );
     }
 
     const root = ReactDOM.createRoot(document.getElementById('root'));

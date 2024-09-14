@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"> hello 333</div>
+
+<script type="text/babel">
+
+    let { useState } = React;
+
+    function Counter() {
+
+        let $i = 0;
+        console.log(10, $i);
+
+        const [count, setCount] = useState($i);
+
+        console.log(11, $i, count);
+
+        return (
+            <>
+                <div>
+                    {         console.log("begin render - ", $i, count)           }
+                    <p>Current count: {count}</p>
+                    <button onClick={() => setCount(count + 1)}>Increment</button>
+                    <button onClick={() => setCount(count - 1)}>Decrement</button>
+                </div>
+                <Counter2 />
+            </>
+
+        );
+    }
+
+    function Counter2() {
+
+        let $i = 0;
+        console.log(20, $i);
+
+        const [count, setCount] = useState(0);
+
+        const increment = () => {
+            setCount((prevCount) => prevCount + 1); // Update based on previous state
+        };
+
+        const decrement = () => {
+            setCount((prevCount) => prevCount - 1);
+        };
+        console.log(21, $i, count);
+
+        return (
+            <div>
+                {         console.log("begin render 2- ", $i, count)           }
+                <p>Current count: {count}</p>
+                <button onClick={increment}>Increment</button>
+                <button onClick={decrement}>Decrement</button>
+            </div>
+        );
+    }
+
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Counter />);
+
+</script>
+
+</body>
+</html>

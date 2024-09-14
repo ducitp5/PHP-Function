@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"> hello 333</div>
+
+<script type="text/babel">
+
+    let { useState } = React;
+
+    function Form() {
+        const [formData, setFormData] = useState({ name: '', age: '' });
+
+        const updateForm = (field, value) => {
+            setFormData((prevData) => ({
+                ...prevData, // Spread the previous state
+                [field]: value, // Update the specific field
+            }));
+        };
+
+        return (
+            <div>
+                <input
+                    type="text"
+                    placeholder="Name"
+                    value={formData.name}
+                    onChange={(e) => updateForm('name', e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Age"
+                    value={formData.age}
+                    onChange={(e) => updateForm('age', e.target.value)}
+                />
+                <p>Name: {formData.name}</p>
+                <p>Age: {formData.age}</p>
+            </div>
+        );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Form />);
+
+</script>
+
+</body>
+</html>

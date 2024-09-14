@@ -15,6 +15,7 @@
 
     // Create a context with 'abc' as the default value
     const MyContext = createContext('abc');
+    console.log('Component0 - ', MyContext, MyContext._currentValue, 222, MyContext._currentValue2)
 
     function Component1() {
         const [name] = useState('Jesse Hall');
@@ -40,6 +41,8 @@
     function Component3() {
         // Component3 uses the value from the Provider, which is 'duc'
         const user = useContext(MyContext);
+        console.log('Component3 - ', MyContext, user, MyContext._currentValue, 222, MyContext._currentValue2)
+        console.log('_defaultValue - ', MyContext.Provider)
 
         return (
             <>
@@ -53,6 +56,7 @@
         // This component will use the default value 'abc' since it is not inside a Provider
         const user = useContext(MyContext);
 
+        console.log('ComponentWithoutProvider - ', MyContext, user)
         return (
             <div>
                 <h2>Component Without Provider: Default Value</h2>

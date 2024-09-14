@@ -20,7 +20,7 @@
         const [color, setColor] = useState('abc');
         const [count, setCount] = useState(0);
 
-        // console.log(222);
+        console.log(222, color, count);
 
         let changeColor = (icolor) => {
             console.log(color +'-s11-' +icolor)
@@ -32,6 +32,7 @@
 
         return (
             <>
+                {     console.log('begin render - ', color)     }
                 <h1>My favorite color is {color}!</h1>
 
                 <button
@@ -69,13 +70,13 @@
                     onClick={
                         () => {
                             setCount(count + 1);
-                            console.log(count)
+                            console.log('count - ', count)
                         }
                     }
                 >
                     count
                 </button>
-
+                {     console.log('end render')     }
             </>
         );
     }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    let $i = 0;
+    console.log(1)
+
+    const { useState, useEffect, useRef }   = React;
+
+    console.log(2)
+
+    function App() {
+
+        $i++;
+        console.log(111, $i)
+
+        const [inputValue, setInputValue]   = useState("a");
+        const previousInputValue            = useRef("");
+
+        let previousInputValue2 = "2";
+        const [previousInputValue3, setPreviousInputValue3] = useState("3");  // useState for previousInputValue2
+        console.log(222, inputValue)
+
+        // useEffect(
+        //     () => {
+        //         previousInputValue.current = inputValue;
+        //         previousInputValue2 = inputValue;
+        //         // setPreviousInputValue3(inputValue);  // Update the state
+        //     },
+        //     // [inputValue]
+        // );
+
+        console.log(333, inputValue)
+        return (
+            <>
+                <input
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                />
+                <h2>Current Value: {inputValue}</h2>
+                <h2>Previous Value: {previousInputValue.current}</h2>
+                <h2>Previous2 Value: {previousInputValue2}</h2>
+                <h2>Previous3 Value: {previousInputValue3}</h2>
+                { console.log('ttttt', $i)}
+            </>
+        );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+
+</script>
+
+</body>
+</html>
