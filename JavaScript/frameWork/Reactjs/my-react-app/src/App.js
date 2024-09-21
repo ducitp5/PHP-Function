@@ -3,8 +3,9 @@ import './App.css';
 import App2 from "./components/App";
 import { EffectDemo } from "./components/UseEffect";
 import {Game} from "./components/Game";
-import FoodForm from "./components/FoodForm"
+import FoodForm, {FoodFormWithProvider} from "./components/FoodForm"
 import {FoodProvider} from "./components/FoodForm/FoodContext";
+import RouterExamples, {RouterExamples2} from "./pages/Router-examples";
 
 function App() {
 
@@ -12,10 +13,9 @@ function App() {
       <>
           {/*<App2 />*/}
           {/*<Game />*/} {/* dang ko chay duoc*/}
-          <FoodProvider>
-              <FoodForm />
-          </FoodProvider>
-
+          {/*<FoodFormWithProvider />*/}
+          <RouterExamples />
+          {/*<RouterExamples2 />*/}
       </>
   );
 }

@@ -1,6 +1,6 @@
 import './FoodForm/FoodForm.css';
 import React,{ useContext } from 'react';
-import FoodContext from "./FoodForm/FoodContext";
+import FoodContext, {FoodProvider} from "./FoodForm/FoodContext";
 import NameComponent from "./FoodForm/NameComponent";
 import LocationComponent from "./FoodForm/LocationComponent";
 
@@ -32,3 +32,14 @@ const FoodForm = () => {
     )
 }
 export default FoodForm;
+
+function FoodFormWithProvider() {
+
+    return (
+        <FoodProvider>
+            <FoodForm />
+        </FoodProvider>
+    );
+}
+
+export { FoodFormWithProvider };
