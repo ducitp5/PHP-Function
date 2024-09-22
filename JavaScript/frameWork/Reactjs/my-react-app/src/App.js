@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import App2 from "./components/App";
@@ -9,15 +10,29 @@ import RouterExamples, {RouterExamples2} from "./pages/Router-examples";
 
 function App() {
 
-  return (
-      <>
-          {/*<App2 />*/}
-          {/*<Game />*/} {/* dang ko chay duoc*/}
-          {/*<FoodFormWithProvider />*/}
-          <RouterExamples />
-          {/*<RouterExamples2 />*/}
-      </>
-  );
+    const [showCpn, setShowCpn] = useState(true); // State to toggle component
+
+    const toggleComponent = () => {
+        setShowCpn(prevState => !prevState); // Toggle the component
+    };
+
+    const $Cpn = <RouterExamples />;
+
+    return (
+        <>
+            <button onClick={toggleComponent}>
+                {showCpn ? "Hide RouterExamples" : "Show RouterExamples"}
+            </button>
+
+            {showCpn ? $Cpn : null}
+
+            {/*<App2 />*/}
+            {/*<Game />*/} {/* dang ko chay duoc*/}
+            {/*<FoodFormWithProvider />*/}
+            {/*<RouterExamples />*/}
+            {/*<RouterExamples2 />*/}
+        </>
+    );
 }
 
 export default App;
