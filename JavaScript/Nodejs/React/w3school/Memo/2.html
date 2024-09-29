@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Todo with Increment Buttons</title>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    const { useState, memo } = React;
+
+    // Memoized Todos component
+    const Todos = memo(
+        ({ todos, setTodos }) => {
+            console.log("child render", todos);
+
+            const incrementTodo = (index) => {
+                setTodos((prevTodos) =>
+                    prevTodos.map((todo, i) =>
+                        i === index ? { ...todo, count: todo.count + 1 } : todo
+                    )
+                );
+            };
+
+            return (
+                <>
+                    <h2>My Todos</h2>
+                    {todos.map((todo, index) => {
+                        return (
+                            <div key={index}>
+                                <p>
+                                    {todo.text} - Count: {todo.count}
+                                    <button onClick={() => incrementTodo(index)}>+</button>
+                                </p>
+                            </div>
+                        );
+
+                    })}
+                </>
+            );
+        }
+    );
+
+    // Main App component
+    function App() {
+        const [count, setCount] = useState(0);
+        const [todos, setTodos] = useState([
+            { text: "todo 1", count: 0 },
+            { text: "todo 2", count: 0 },
+        ]);
+
+        const increment = () => {
+            setCount((c) => c + 1);
+        };
+
+        return (
+            <>
+                <Todos todos={todos} setTodos={setTodos} />
+                <hr />
+                <div>
+                    Count: {count}
+                    <button onClick={increment}>+</button>
+                </div>
+            </>
+        );
+    }
+
+    // Render the App component
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+
+</script>
+
+</body>
+</html>

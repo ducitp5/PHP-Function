@@ -7,6 +7,7 @@ import {Game} from "./components/Game";
 import FoodForm, {FoodFormWithProvider} from "./components/FoodForm"
 import {FoodProvider} from "./components/FoodForm/FoodContext";
 import RouterExamples, {RouterExamples2} from "./pages/Router-examples";
+import Memo from "./components/memo/Memo";
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
         setShowCpn(prevState => !prevState); // Toggle the component
     };
 
-    const $Cpn = <RouterExamples />;
+    const $Cpn = <Memo />;
 
     return (
         <>
