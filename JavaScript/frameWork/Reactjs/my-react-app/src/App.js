@@ -8,6 +8,8 @@ import FoodForm, {FoodFormWithProvider} from "./components/FoodForm"
 import {FoodProvider} from "./components/FoodForm/FoodContext";
 import RouterExamples, {RouterExamples2} from "./pages/Router-examples";
 import Memo from "./components/memo/Memo";
+import useMemo from "./components/memo/useMemo";
+import UseMemo from "./components/memo/useMemo2";
 
 function App() {
 
@@ -17,7 +19,7 @@ function App() {
         setShowCpn(prevState => !prevState); // Toggle the component
     };
 
-    const $Cpn = <Memo />;
+    const $Cpn = <UseMemo />;
 
     return (
         <>

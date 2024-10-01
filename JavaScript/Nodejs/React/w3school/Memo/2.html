@@ -22,9 +22,9 @@
             console.log("child render", todos);
 
             const incrementTodo = (index) => {
-                setTodos((prevTodos) =>
-                    prevTodos.map((todo, i) =>
-                        i === index ? { ...todo, count: todo.count + 1 } : todo
+                setTodos(
+                    (prevTodos) => prevTodos.map(
+                        (todo, i) =>  i === index ? { ...todo, count: todo.count + 1 } : todo
                     )
                 );
             };
