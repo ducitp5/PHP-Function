@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+    function myDisplayer(some) {
+        document.getElementById("demo").innerHTML = some;
+    }
+
+    function myFirst() {
+        myDisplayer("sin chao");
+    }
+
+    function mySecond() {
+        myDisplayer("Goodbye222");
+    }
+
+    setTimeout(
+        myFirst
+        ,
+        2000
+    );
+    mySecond();
+</script>
+
+</body>
+</html>
