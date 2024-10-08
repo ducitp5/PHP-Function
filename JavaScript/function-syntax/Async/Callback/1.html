@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+    var name = "Minh Quan";
+
+    function whoWriteThis(param){
+        alert("whoWriteThis() called by "+param);
+    }
+
+    function testFunction(callback){
+        callback();
+    }
+
+    testFunction(whoWriteThis(name));
+</script>
+
+</body>
+</html>
+
+

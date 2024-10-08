@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Functions</h1>
+<h2>Callback Functions</h2>
+
+<p>The result of the calculation is:</p>
+<p id="demo"></p>
+
+<script>
+
+    // Keep only positive numbers
+    function removeNeg(numbers, callback) {
+        const myArray = [];
+        for (const x of numbers) {
+            if (callback(x)) {
+                myArray.push(x);
+            }
+        }
+        return myArray;
+    }
+
+    // Create an Array
+    const myNumbers = [4, 1, -20, -7, 5, 9, -6];
+
+    // Call removeNeg with a callback
+    const posNumbers = removeNeg(myNumbers, (x) => x >= 0);
+
+    console.log(posNumbers);
+    // Display Result
+    document.getElementById("demo").innerHTML = posNumbers;
+
+
+</script>
+
+</body>
+</html>
