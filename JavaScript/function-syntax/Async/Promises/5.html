@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Promise Example</title>
+</head>
+<body>
+
+<h1 id="demo"></h1>
+
+<script>
+
+    console.log('Trước khi khởi tạo');
+
+    const myPromise = new Promise(
+        (resolve, reject) => {
+            console.log('Khởi tạo Promise');
+            resolve(123);
+        })
+        .then((number) => {
+            console.log('Số nhận được là ' + number);
+            throw new Error('Có một lỗi đã xảy ra');
+            console.log('Chạy chỗ này');
+        })
+        .catch((errorMessage) => {
+            console.log('Catch với tham số lỗi ' + errorMessage);
+            return 456;
+        })
+        .then((number) => {
+            console.log('Số tiếp theo nhận được là ' + number);
+        });
+    console.log('Sau khi khởi tạo');
+
+    console.log(3333, myPromise);
+
+    const myPromise2 = Promise;
+
+    console.log(4444, myPromise2);
+
+</script>
+
+</body>
+</html>

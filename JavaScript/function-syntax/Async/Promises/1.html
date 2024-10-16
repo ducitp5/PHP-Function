@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+
+
+    function myDisplayer(some) {
+        document.getElementById("demo").innerHTML = some;
+    }
+
+    let $ob = { 'a' : 'Aac', 'b' : 'B'}
+
+    let myPromise = new Promise(
+
+        function(myResolve, myReject) {
+
+            // console.log(112211, this)
+            let x = 2;
+            // console.log('000aaaa', myReject($ob)) //why it dont run to here
+
+            if (x == 1) {
+
+                myResolve($ob);
+            }
+            else {
+
+                myReject("Error 222");
+            }
+        }
+    );
+
+    myPromise
+        .then(
+            function($success) {
+                console.log(1111, $success, myPromise)
+                myDisplayer($success.a);
+                return 123;
+            },
+            // function(error) {
+            //     console.log(2222, error)
+            //     myDisplayer(error);
+            // }
+        )
+        .catch(
+            function(err)
+            {
+                console.log(1122, err)
+                myDisplayer(JSON.stringify(err));
+                return 345;
+            }
+        )
+        .then(
+            function(value) {
+                console.log(3333, value, myPromise)
+
+                return "abc";
+            }
+        )
+        .then(
+            function ($val){
+                console.log(4444, $val, myPromise)
+            }
+        )
+    ;
+
+</script>
+
+</body>
+</html>

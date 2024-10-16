@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Promise Example</title>
+</head>
+<body>
+
+<h1 id="demo"></h1>
+
+<script>
+
+    // Create a Promise
+    const myPromise1 = new Promise (resolve =>  resolve('King')
+        // setTimeout(resolve, 4000, "King");
+
+    );
+
+    // Create another Promise
+    const myPromise2 = new Promise((resolve, reject) => {
+        resolve('qqueen');
+        setTimeout(resolve, 3000, "Queen");
+    });
+
+    const myPromise3 = new Promise((resolve, reject) => {
+        setTimeout(resolve, 1500, "sai rui");
+    });
+    const myPromise4 = new Promise((resolve, reject) => {
+        setTimeout(resolve, 1500, "sai2");
+    });
+
+    // Both resolves. Who is faster?
+    let $pa = Promise.all([myPromise1, myPromise2, myPromise3, myPromise4])
+        .then(
+            (x) => {
+                console.log(1111, x)
+                console.log(1122, $pa)
+
+                myDisplay(x);
+            }
+        )
+        .catch(
+            erro => {
+                console.log(erro);
+                myDisplay(erro)
+            }
+        )
+    ;
+
+    // let $pa = Promise;
+    console.log(myPromise1, myPromise2, myPromise3);
+    console.log(222, $pa)
+
+    // Funtion to run when a Promise is settled:
+    function myDisplay(some) {
+        document.getElementById("demo").innerHTML = some;
+    }
+
+</script>
+
+</body>
+</html>

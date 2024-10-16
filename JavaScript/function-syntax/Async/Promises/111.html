@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Promise Example</title>
+</head>
+<body>
+
+<h1 id="demo"></h1>
+
+<script>
+
+    console.log('Trước khi khởi tạo');
+
+    const promise1 = new Promise((resolve, reject) => {
+        setTimeout(resolve, 500, '123');
+    });
+
+    const promise2 = new Promise((resolve, reject) => {
+        setTimeout(resolve, 100, '456');
+    });
+
+    const myPromise = Promise.race([
+        promise1,
+        promise2
+    ]).then(result => {
+        console.log('Kết quả trả về sớm nhất ' + result); // 456
+    });
+
+    console.log(3333, myPromise);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Promise Example</title>
+</head>
+<body>
+
+<h1 id="demo"></h1>
+
+<script>
+
+    console.log('Trước khi khởi tạo');
+
+    const myPromise = new Promise(
+        (resolve, reject) => {
+            reject(123);
+        }
+    );
+
+    window.addEventListener(
+        "unhandledrejection",
+        (event) => {
+
+            console.log(111, event);
+            console.error('Một reject Promise chưa được bắt');
+            console.error('Mã lỗi ' + event.reason)
+            console.error('Event', event);
+
+            event.preventDefault();
+        }
+    );
+
+
+    console.log(3333, myPromise);
+</script>
+
+</body>
+</html>

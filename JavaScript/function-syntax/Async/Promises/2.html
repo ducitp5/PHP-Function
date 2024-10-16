@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="demo"></h1>
+
+<script>
+
+    let $ob = { 'a' : 'A', 'b' : 'B'}
+
+    const myPromise = new Promise(
+        function(myResolve, myReject) {
+
+            let x = 0;
+
+            setTimeout(
+                function(){
+                    if (x == 0) {
+
+                        myResolve($ob);
+                    } else {
+                        myReject("Error 111");
+                    }
+                },
+                3000
+            );
+        }
+    );
+
+    myPromise
+        .then(
+            function(value) {
+                console.log(2222, myPromise);
+
+                document.getElementById("demo").innerHTML = value.a;
+            }
+        )
+        .catch(
+            function(erro) {
+                console.log(2222, myPromise);
+
+                document.getElementById("demo").innerHTML = erro;
+            }
+        )
+    ;
+
+    console.log(3333, myPromise);
+</script>
+
+</body>
+</html>

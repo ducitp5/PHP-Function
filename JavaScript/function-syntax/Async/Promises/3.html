@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+    function myDisplayer(some) {
+        document.getElementById("demo").innerHTML = some;
+    }
+    console.log(0, this)
+
+    function getFile(myCallback) {
+
+        let req = new XMLHttpRequest();
+
+        console.log(1111, req)
+        console.log(2222, this)
+
+        req.onload = function() {
+
+            console.log(3333, this)
+            myCallback(this.responseText);
+
+            if (req.status == 200) {
+                console.log(6666, req.responseType, req.responseText)
+
+                myCallback(this.responseText);
+            } else {
+                myCallback("Error: " + req.status);
+            }
+        }
+        req.open('GET', "mycar.html");
+        req.send();
+
+    }
+
+    getFile(myDisplayer);
+</script>
+
+</body>
+</html>

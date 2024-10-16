@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Promise Example</title>
+</head>
+<body>
+
+<h1 id="demo"></h1>
+
+<script>
+
+    console.log('Trước khi khởi tạo');
+
+    const myPromise = Promise.all(
+        [
+            1,
+            2,
+            Promise.resolve(3),
+            // Promise.reject("sai rui"),
+        ]
+    )
+    .then(
+        (
+            res3
+            // [result1, result2, res3]
+        ) =>
+        {
+            // console.log('result1 - ' + result1); // 123
+            // console.log('result2 - ' + result2); // 456
+            console.log('res3 - ' + res3); // 456
+
+        }
+    )
+    // .catch(
+    //     (error) => {
+    //         console.log('err - ' +error);
+    //     }
+    // )
+
+    ;
+
+    console.log(3333, myPromise);
+
+    // const myPromise2 = new Promise(
+    //     (resolve, reject) => {
+    //         resolve(555)
+    //     }
+    // );
+    //
+    // console.log(4444, myPromise2);
+</script>
+
+</body>
+</html>
