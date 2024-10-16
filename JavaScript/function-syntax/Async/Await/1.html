@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+
+    function myDisplayer(some) {
+        document.getElementById("demo").innerHTML = some;
+    }
+
+    async function asyncFunction ($input = null) {
+
+        let $val = $input ?? "Hello" ;
+
+        console.log(1111, $input, Boolean($input), $val )
+
+        // Simulate an error by throwing an exception
+        if ($input === 555) {
+            throw new Error("Simulated error: Invalid input!");
+        }
+
+        return $val;
+    }
+
+    console.log(2222, asyncFunction())
+
+    let $as2 = asyncFunction(22)
+        // .then(
+        //     function(value) {myDisplayer(value);},
+        //     function(error) {myDisplayer(error);}
+        // )
+    ;
+
+    console.log(333, $as2)
+</script>
+
+</body>
+</html>

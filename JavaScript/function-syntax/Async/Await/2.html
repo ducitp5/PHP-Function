@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2 id="demo"></h2>
+
+<script>
+    async function myDisplay() {
+
+        // let myPromise = new Promise(function(resolve, reject) {
+        //     resolve("I love You !!");
+        // });
+
+        let myPromise = new Promise(function(resolve) {
+            setTimeout(
+                function() {
+                    resolve("I love You !!");
+                },
+                3000
+            );
+        });
+
+        console.log(111, myPromise)
+
+        let $res = await myPromise
+        console.log(222, $res, myPromise)
+
+        document.getElementById("demo").innerHTML = $res;
+    }
+
+    myDisplay();
+</script>
+
+</body>
+</html>
