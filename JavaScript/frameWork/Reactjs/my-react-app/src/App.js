@@ -10,6 +10,7 @@ import RouterExamples, {RouterExamples2} from "./pages/Router-examples";
 import Memo from "./components/memo/Memo";
 import useMemo from "./components/memo/useMemo";
 import UseMemo from "./components/memo/useMemo2";
+import CustomHook1 from "./components/CustomeHooks/CustomHook1";
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
         setShowCpn(prevState => !prevState); // Toggle the component
     };
 
-    const $Cpn = <UseMemo />;
+    const $Cpn = <CustomHook1 />;
 
     return (
         <>

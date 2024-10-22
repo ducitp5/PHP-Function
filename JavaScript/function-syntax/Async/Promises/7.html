@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Promise Example</title>
+</head>
+<body>
+
+<h1 id="demo"></h1>
+
+<script>
+
+    class MyPromise {
+        constructor(callback) {
+            console.log("prototype method constructor")
+        }
+
+        then(onFulfilled) {
+            console.log("prototype method then")
+            return this
+        }
+
+        catch2(onRejected) {
+            console.log("prototype method catch")
+            return this
+        }
+
+        finally(onFinally) {
+            console.log("prototype method finally")
+        }
+
+        static resolve(value) {
+            console.log('static method resolve', value)
+        }
+
+        static all(array) {
+            console.log('static method all', array)
+        }
+    }
+
+    MyPromise.propertyX = "property"
+
+    const instance = new MyPromise()
+
+    console.log('instance - ', instance)
+    console.log('instance.constructor - ', instance.constructor)
+    // prototype method
+    instance.then().catch2().finally()
+
+    // static property
+    console.log('MyPromise.propertyX - ', MyPromise.propertyX)
+    // static method
+    MyPromise.resolve('xxx')
+    MyPromise.all(['yyy', 'zzz'])
+
+    console.log(3333, MyPromise);
+</script>
+
+</body>
+</html>

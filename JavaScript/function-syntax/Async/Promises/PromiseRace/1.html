@@ -17,16 +17,32 @@
         setTimeout(resolve, 500, '123');
     });
 
+    let $pro11 = 'aaa';
+        // setTimeout(() => Promise.resolve("1122"), 1000 )
+    console.log('$pro11 ', $pro11, promise1); // 456
+
     const promise2 = new Promise((resolve, reject) => {
         setTimeout(resolve, 100, '456');
     });
 
-    const myPromise = Promise.race([
-        promise1,
-        promise2
-    ]).then(result => {
-        console.log('Kết quả trả về sớm nhất ' + result); // 456
-    });
+    const myPromise = Promise.race(
+        [
+            promise1,
+            // $pro11,
+            // 'xys',
+            promise2
+        ]
+    )
+    .then(
+        result => {
+            console.log('Kết quả trả về sớm nhất ' + result, myPromise); // 456
+        }
+    )
+    .then(
+        result => {
+            console.log('nhi ' + result, myPromise); // 456
+        }
+    );
 
     console.log(3333, myPromise);
 </script>

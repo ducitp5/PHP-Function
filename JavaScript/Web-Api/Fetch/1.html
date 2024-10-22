@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+
+    let file = "fetch_info.txt"
+
+    let $fetch = fetch (file);
+    let $fetch2 = await fetch (file);
+
+    console.log("AAA", $fetch);
+    console.log("A22", $fetch2);
+
+    $fetch.then(
+        $response => {
+            console.log(111, $response, $response.status, $response.text());
+            let $text = $response.text();
+            console.log(222, $text);
+            return  $text;
+        }
+    )
+    .then(
+        ($y) => {
+            console.log(333, $y);
+            document.getElementById("demo").innerHTML = '<pre>' +$y+ '</pre>';
+        }
+    )
+    .catch(
+        $err => {
+            console.log('erro - ', $err)
+        }
+    )
+
+    console.log("BBB", $fetch);
+
+    // $fetch.then(
+    //         $y => {
+    //             console.log(333, $y);
+    //             document.getElementById("demo").innerHTML = '<pre>' +$y+ '</pre>';
+    //         }
+    //     )
+
+    // console.log("CCC", $fetch);
+
+</script>
+
+</body>
+</html>

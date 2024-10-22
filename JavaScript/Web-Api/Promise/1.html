@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+
+    // Simulating an asynchronous operation using a promise
+    function fetchData() {
+        return new Promise(
+            (resolve2) => {
+                console.log(3333, resolve2.toString());
+
+                setTimeout(
+                    () => resolve2("Data received"),
+                    2000
+                );
+                // resolve("Data received 2")
+            }
+        );
+    }
+
+    // Using async and await
+    async function getData() {
+        console.log("Fetching data...");
+        let data = await fetchData(); // Pauses here until fetchData resolves
+        console.log("2222");
+
+        console.log(data); // Logs: "Data received"
+    }
+
+    getData();
+
+</script>
+
+</body>
+</html>
