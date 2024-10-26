@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    class Container extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.state = {show: true};
+        }
+
+        delHeader = () => {
+            this.setState({show: !this.state.show});
+        }
+
+        render() {
+
+            let myheader;
+
+            if (this.state.show) {
+                myheader = <Child />;
+            };
+
+            return (
+                <div>
+                    {myheader}
+                    <button type="button" onClick={this.delHeader}>Delete Header</button>
+                </div>
+            );
+        }
+    }
+
+    class Child extends React.Component {
+
+        componentDidMount() {
+            alert("The component will nmounted.");
+        }
+
+        componentWillUnmount() {
+            alert("The component named Header is about to be unmounted.");
+        }
+        render() {
+            return (
+                <h1>Hello World!</h1>
+            );
+        }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Container favcol="yellow"/>);
+
+</script>
+
+</body>
+</html>

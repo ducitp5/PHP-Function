@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    class Header extends React.Component {
+
+        // Mounting Phase
+        constructor(props) {
+            super(props);
+            this.state = {favoritecolor: "red"};
+
+            console.log('constructor', props);
+        }
+
+        static getDerivedStateFromProps(props, state) {
+            console.log('getDerivedStateFromProps', props, state);
+            // Return new state based on props, or null to not update the state.
+            return null;
+        }
+
+        render() {
+            console.log('render - ', this.state);
+
+            return (
+                <div>
+                    <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+                    <div id="div1"></div>
+                    <div id="div2"></div>
+                </div>
+            );
+        }
+
+        componentDidMount() {
+
+            console.log('componentDidMount');
+
+            setTimeout(() => {
+                console.log('111 componentDidMount');
+
+                this.setState({favoritecolor: "yellow"})
+            }, 2000)
+        }
+
+        // Updating Phase
+        shouldComponentUpdate(nextProps, nextState, nextContext) {
+            console.log('shouldComponentUpdate', nextProps, nextState, nextContext)
+            // Return true if component should update, false otherwise.
+            return true;
+        }
+
+        getSnapshotBeforeUpdate(prevProps, prevState) {
+
+            console.log('getSnapshotBeforeUpdate', prevProps, prevState);
+
+            document.getElementById("div1").innerHTML =
+                "Before the update, the favorite was " + prevState.favoritecolor;
+            return null;
+        }
+
+        componentDidUpdate() {
+
+            console.log('componentDidUpdate');
+
+            document.getElementById("div2").innerHTML =
+                "The updated favorite is " + this.state.favoritecolor;
+        }
+
+        // Unmounting Phase
+        componentWillUnmount() {
+
+            console.log('componentWillUnmount');
+        }
+
+        // Error Handling:
+        static getDerivedStateFromError(error){
+            console.log('getDerivedStateFromError', error)
+        }
+
+        componentDidCatch(error, info){
+            console.log('componentDidCatch', error, info)
+        }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Header favcol="yellow"/>);
+
+</script>
+
+</body>
+</html>

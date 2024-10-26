@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+    let { useState } = React;
+
+    class Header extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {favoritecolor: "red"};
+        }
+
+        static getDerivedStateFromProps (props, state){
+
+            console.log(1111, props, state)
+            return { favoritecolor2: props.favcol };
+        }
+
+        render() {
+            console.log(222, this)
+            return (
+                <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+            );
+        }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<Header favcol="yellow"/>);
+
+</script>
+
+</body>
+</html>
