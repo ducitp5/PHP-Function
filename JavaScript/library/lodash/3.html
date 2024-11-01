@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lodash Usage</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+</head>
+<body>
+<div id="output"></div>
+
+<script>
+
+    var object = { 'a': { 'b': 2 } };
+    var other = _.create({ 'a': _.create({ 'b': 2 }) });
+
+    console.log(1, _.has(object, 'a'));
+    console.log(1, _.has(object, 'b'));
+
+    console.log(2, _.has(object, 'a.b'));
+    // => true
+
+    console.log(3, _.has(object, ['a', 'b']));
+    // => true
+
+    console.log(other, object)
+    console.log(4, _.has(other, 'a'));
+    // => false
+
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lodash Usage</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+</head>
+<body>
+<div id="output"></div>
+
+<script>
+
+    var users = [
+        { 'user': 'barney', 'age': 36, 'active': false },
+        { 'user': 'barney', 'age': 22, 'active': true },
+        { 'user': 'barney', 'age': 34, 'active': false },
+        { 'user': 'pebbles', 'age': 536, 'active': true },
+        { 'user': 'fred', 'age': 363,   'active': false },
+    ];
+
+    let $barney = _.findIndex(users, function(u) { return u.user == 'barney'; });
+
+    console.log('$barney', $barney)
+
+    let $activeUsers = _.filter(users, function(u) { return u.active; }); // Tìm phần tử trong mảng có 'active' == 'false'
+
+    console.log('$activeUsers', $activeUsers)
+
+    let $desUsers = _.sortBy(users, [function(o) { return o.user; }]);
+    console.log('$desUsers', $desUsers)
+
+    let $desUserAges = _.sortBy(users, ['user', 'age']);
+    console.log('$desUserAges', $desUserAges)
+
+    console.log('------------------------');
+
+    users = {
+        'barney':  { 'age': 36, 'active': true },
+        'fred':    { 'age': 40, 'active': false },
+        'pebbles': { 'age': 1,  'active': true }
+    };
+
+    console.log(1, _.findKey(users, function(o) { return o.age < 40; }));
+    // => 'barney' (iteration order is not guaranteed)
+
+    // The `_.matches` iteratee shorthand.
+    console.log(2, _.findKey(users, { 'age': 1, 'active': true }));
+    // => 'pebbles'
+
+    // The `_.matchesProperty` iteratee shorthand.
+    console.log(3, _.findKey(users, ['active', false]));
+    // => 'fred'
+
+    // The `_.property` iteratee shorthand.
+    console.log(4, _.findKey(users, 'active'));
+    // => 'barney'
+
+    console.log('------------------------');
+
+    var object = { 'a': 1, 'b': '2', 'c': 3 };
+
+    console.log(33, _.pick(object, ['a', 'c']));
+    // => { 'a': 1, 'c': 3 }
+
+
+</script>
+</body>
+</html>

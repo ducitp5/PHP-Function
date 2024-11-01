@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lodash Usage</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+</head>
+<body>
+<div id="output"></div>
+
+<script>
+
+    let $join = _.join(['a', 'b', 'c'], '~');    // => 'a~b~c'
+
+    console.log('join - ', $join);
+
+    let $last = _.last([1, 2, 3]);
+    console.log('$last - ', $last);
+
+    let $chunk = _.chunk(['a', 'b', 'c', 'd'], 3);
+    console.log('$chunk - ', $chunk);
+
+    var array = [1, 2, 3];
+
+    _.fill(array, 'a');
+    console.log(array);
+    // => ['a', 'a', 'a']
+
+    console.log(_.fill(array, 2)) ;
+    // => [2, 2, 2]
+
+    console.log('_.fill([4, 6, 8, 10], \'*\', 1, 3)', _.fill([4, 6, 8, 10, 11, 12], '*', 2, 4)) ;
+
+    console.log('includes([1, 2, 3], 1) - ', _.includes([1, 2, 3], 1));
+    // => true
+
+    console.log('includes([1, 2, 3], 1, 2) - ', _.includes([1, 2, 3], 1, 2));
+    // => false
+
+    console.log('includes({ \'a\': 1, \'b\': 2 }, 1) - ', _.includes({ 'a': 1, 'b': 2 }, 1));
+    console.log('includes({ \'a\': 1, \'b\': 2 }, a) - ', _.includes({ 'a': 1, 'b': 2 }, 'a'));
+
+    console.log('_.includes(\'abcd\', \'bc\') - ', _.includes('abcd', 'bc'));
+    console.log('_.includes([\'abcd\'], \'bc\') - ', _.includes(['abcd', 'ef'], 'bc'));
+
+</script>
+</body>
+</html>
