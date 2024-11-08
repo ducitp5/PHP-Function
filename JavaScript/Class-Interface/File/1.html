@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+
+    <script>
+
+        const content = "ab ";
+        const content2 = "cd";
+
+        const myFile = new File(
+            [content, content2],
+            "hello.txt",
+            {
+                type: "text/plain",
+                lastModified: new Date()
+            }
+        );
+        console.log('myFile', myFile);
+
+        // let $fileContent = myFile.text().then(fileContent => {
+        // console.log("File Content:", fileContent); // Logs "ab cd"
+        // });
+        let fileContent = false;
+
+        (async () => {
+            let $content = myFile.text()
+            console.log("$content:", $content); // Logs "ab cd"
+
+            fileContent = await $content;
+
+            console.log('888888');
+            console.log("File Content:", fileContent); // Logs "ab cd"
+        })();
+
+        console.log('999999', fileContent);
+
+    </script>
+
+</div>
+
+</body>
+</html>

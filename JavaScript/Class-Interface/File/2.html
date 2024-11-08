@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<div>
+    <h1>Show a File Content</h1>
+    <input type="file" id="fileInput" multiple />
+
+    <div id="output"></div>
+
+    <script>
+
+        const fileInput = document.getElementById("fileInput");
+
+        fileInput.addEventListener("change", function(event) {
+
+            const files = fileInput.files;
+
+            for (let file of files) {
+
+                file.text()
+                    .then(content => {
+                        console.log(`file: `,file);
+
+                        console.log("File Content:", content); // Log the file content
+
+                        const outputDiv = document.getElementById("output");
+                        const $container = document.createElement("div");
+                        outputDiv.appendChild($container);
+
+                        const $title = document.createElement("p");
+                        $title.textContent = `Content of ${file.name}:\n`;
+                        $container.appendChild($title);
+
+                        const fileContent = document.createElement("pre");
+                        fileContent.style.cssText = 'color: red; margin-left: 20px';  // correct here
+                        $container.appendChild(fileContent);
+
+                        fileContent.textContent = `${content}`; // Set innerHTML to interpret HTML tags
+                    }).
+                    catch(error => {
+                        console.error("Error reading file:", error);
+                    });
+            }
+        });
+
+    </script>
+
+</div>
+
+</body>
+</html>
