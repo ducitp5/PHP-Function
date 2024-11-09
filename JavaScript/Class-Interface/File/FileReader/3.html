@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div>
+    <input type="file" id="file-uploader" multiple> <!-- Added `multiple` to allow selecting multiple files -->
+
+    <div id="image-grid"></div>
+
+    <script>
+        const $inputUploader = document.getElementById('file-uploader');
+        const imageGrid = document.getElementById('image-grid');
+
+        $inputUploader.addEventListener('change', (event) => {
+
+            const files = event.target.files;
+
+            Array.from(files).forEach((file) => {
+
+                let element;
+
+                const $fileReader = new FileReader();
+
+                if (file.type.startsWith("image/")) {
+
+                    $fileReader.readAsDataURL(file);
+
+                    $fileReader.onload = (event) => {
+
+                        // Create a container div
+                        element = document.createElement("div");
+                        element.style.display = "flex"; // Aligns items side-by-side
+                        element.style.alignItems = "center"; // Centers items vertically
+
+                        let $img = document.createElement("img");
+                        $img.src = $fileReader.result;
+                        $img.alt = file.name;
+                        $img.style.width = "100px"; // Optional styling
+                        $img.style.height = "100px";
+                        $img.style.marginRight = "10px"; // Space between image and text
+
+                        element.appendChild($img);
+
+                        let $textNode = document.createTextNode(`${file.name}`)
+                        element.appendChild($textNode);
+                    };
+                }
+                else {
+
+                    $fileReader.readAsText(file);
+
+                    $fileReader.onload = (event) => {
+
+                        element = document.createElement("p");
+                        element.innerHTML = `${file.name}: ${$fileReader.result}`;
+                    };
+                }
+
+                $fileReader.onloadend = (event) => {
+
+                    imageGrid.appendChild(element);
+                }
+            });
+        });
+    </script>
+
+</div>
+
+</body>
+</html>

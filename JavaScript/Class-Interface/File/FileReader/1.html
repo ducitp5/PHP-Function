@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div>
+    <h1>Show a File Content</h1>
+    <div id="hello"> </div>
+
+    <script>
+
+        const content = "ab ";
+        const content2 = "cd";
+
+        const helloFile = new File(
+            [content, content2],
+            "hello.txt",
+            {
+                type: "text/plain",
+                lastModified: new Date()
+            }
+        );
+
+        const $fileReader = new FileReader();
+
+        $fileReader.readAsText(helloFile)
+
+        const $hello = document.getElementById('hello');
+
+        $fileReader.onloadend = (event) => {
+
+            $hello.innerHTML = $fileReader.result;
+        };
+
+    </script>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background: #000000;
+            color: #FFFFFF;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Roboto Mono', monospace;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <h1>Show a File Content</h1>
+    <input type="file" id="fileInput" >
+
+    <div id="output"></div>
+
+    <script>
+
+        document.getElementById("fileInput").addEventListener("change", function(event) {
+
+            const file = event.target.files[0]; // Get the first selected file
+
+            const reader = new FileReader();
+
+            console.log('file -', file);
+            console.log('reader -', reader);
+
+            reader.readAsText(file); // Read the file as text
+            console.log('reader.readAsText -', reader);
+
+            // Event listener for when file reading is complete
+            reader.onloadend = function(e) {
+
+                document.getElementById("output").textContent = e.target.result;
+            };
+
+            reader.onerror = function() {
+                console.error("Error reading file", reader.error);
+            };
+
+            reader.onprogress = function(event) {
+                if (event.lengthComputable) {
+
+                    console.log('event loaded', event)
+                    const percentLoaded = (event.loaded / event.total) * 100;
+                    console.log(`Progress: ${percentLoaded.toFixed(2)}%`);
+                }
+            };
+
+        });
+
+    </script>
+
+</div>
+
+</body>
+</html>
