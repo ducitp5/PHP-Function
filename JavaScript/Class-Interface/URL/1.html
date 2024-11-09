@@ -1,0 +1,29 @@
+<html>
+<head>
+
+</head>
+<body>
+
+<script>
+
+    const url = new URL(
+        'https://' +
+        '$username:$password@example.com:8080/path/to/page?name=duc&age=5#h');
+    console.log(url); // URL object with parsed components
+
+    console.log(url.searchParams)
+
+    // Add or update query parameters
+    url.searchParams.set('newParam', '456');
+    console.log('url.toJSON - ', url.toJSON()); // "https://example.com/path?query=123&newParam=456"
+    //
+    // // Get the value of a query parameter
+    // console.log(url.searchParams.get('q')); // "123"
+    //
+    // // Remove a parameter
+    // url.searchParams.delete('q');
+    // console.log(url.toString()); // "https://example.com/path?newParam=456"
+
+</script>
+</body>
+</html>

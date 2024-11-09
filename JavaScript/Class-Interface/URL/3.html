@@ -1,0 +1,53 @@
+<html>
+<head>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background: #000000;
+            color: #FFFFFF;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Roboto Mono', monospace;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <div>
+            <h1>Use Object URL</h1>
+            <input type="file" id="file-uploader" accept=".jpg, .jpeg, .png" >
+
+            <div id="image-grid">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const fileUploader = document.getElementById('file-uploader');
+        const reader = new FileReader();
+        const imageGrid = document.getElementById('image-grid');
+
+        fileUploader.addEventListener('change', (event) => {
+            const files = event.target.files;
+            const file = files[0];
+
+            const img = document.createElement('img');
+            imageGrid.appendChild(img);
+            img.src = URL.createObjectURL(file);
+        });
+
+    </script>
+</body>
+</html>

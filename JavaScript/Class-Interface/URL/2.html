@@ -1,0 +1,55 @@
+<html>
+<body>
+<!--<h2> JavaScript - Blob URL </h2>-->
+<a href = "#" target="_blank" id = "download"> Download Text File </a>
+<br>
+<a href = "#" target="_blank" id = "download2"> Download Text File 2 </a>
+
+<script>
+
+    const blob = new Blob(
+        ['Hello, world!'],
+        { type: 'text/plain' }
+    );
+
+    const blobUrl = URL.createObjectURL(blob);
+
+    console.log('blobUrl - ', blobUrl); // "blob:<generated-url>"
+    var a = document.getElementById("download");
+    a.href = blobUrl;
+
+    var a2 = document.getElementById("download2");
+    const blobUrl2 = URL.createObjectURL(blob);
+    console.log('blobUrl2 - ', blobUrl2); // "blob:<generated-url>"
+
+    a2.href = blobUrl2;
+
+    URL.revokeObjectURL(blobUrl +'ab');
+
+    // document.body.appendChild(a);
+
+    // Release the object URL when done
+    // URL.revokeObjectURL(blobUrl);
+    // //
+    // const baseUrl = 'https://example.com/path/';
+    // const relativeUrl = new URL('subpage', baseUrl);
+    // //
+    // console.log('relativeUrl.href', relativeUrl.href); // "https://example.com/path/subpage"
+    //
+    // const exampleUrl = new URL('https://example.com/page?name=John&age=30');
+    //
+    // // Access components
+    // console.log(exampleUrl.hostname); // "example.com"
+    // console.log(exampleUrl.searchParams.get('name')); // "John"
+    //
+    // // Add a new parameter
+    // exampleUrl.searchParams.append('country', 'US');
+    // console.log(exampleUrl.toString()); // "https://example.com/page?name=John&age=30&country=US"
+    //
+    // // Change the path
+    // exampleUrl.pathname = '/newpage';
+    // console.log(exampleUrl.href); // "https://example.com/newpage?name=John&age=30&country=US"
+
+</script>
+</body>
+</html>
