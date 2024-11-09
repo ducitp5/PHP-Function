@@ -1,0 +1,24 @@
+<html>
+<body>
+<h2> JavaScript - Blob URL </h2>
+<a href = "#" id = "download"> Download Text File </a>
+<script>
+    // Creating file using Blob object
+    var data = "This file contains the content of the blob object.";
+    var blob = new Blob(
+        [data],
+        {
+            type: 'text/plain'
+        }
+    );
+    // Creating URL from Blob object
+    var blobUrl = URL.createObjectURL(blob);
+
+    console.log('blobUrl', blobUrl)
+    var a = document.getElementById("download");
+
+    a.href = blobUrl;
+
+</script>
+</body>
+</html>

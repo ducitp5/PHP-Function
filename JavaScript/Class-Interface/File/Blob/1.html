@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2> JavaScript - Blob Object </h2>
+    <h3 id = "output"> </h3>
+    <script>
+        var data = "AB ";
+        var data2= "cd";
+
+        var blob = new Blob(
+            [data, data2],
+            {
+                type: 'text/plain'
+            }
+        );
+
+        let $jsdata = '"[{"a":"A","l":1}]"';
+
+        const blob2 = new Blob(
+            [$jsdata],
+            { type: "application/json" }
+        );
+
+        let $blobs = [blob, blob2];
+
+        let $outPut = document.getElementById("output");
+
+        $blobs.forEach(function ($blob, $index) {
+            // setTimeout(() => {
+
+            let reader = new FileReader();
+
+            reader.readAsText($blob);
+            console.log('index - ' +$index);
+
+            reader.onloadend = () => {
+
+                console.log(`Blob ${$index + 1}`);
+
+                let $content = document.createElement('p');
+                $content.innerHTML = `Blob ${$index + 1} Content: ${reader.result}`;
+                $outPut.appendChild($content);
+
+            };
+            // }, ($index + 1) * 1000);
+        });
+
+    </script>
+</body>
+</html>
