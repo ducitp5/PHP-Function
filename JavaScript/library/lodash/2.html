@@ -12,14 +12,19 @@
 <script>
 
     var users = [
-        { 'user': 'barney', 'age': 36, 'active': false },
-        { 'user': 'barney', 'age': 22, 'active': true },
-        { 'user': 'barney', 'age': 34, 'active': false },
-        { 'user': 'pebbles', 'age': 536, 'active': true },
-        { 'user': 'fred', 'age': 363,   'active': false },
+        { 'name': 'barney', 'age': 36, 'active': false },
+        { 'name': 'barney', 'age': 22, 'active': true },
+        { 'name': 'barney', 'age': 34, 'active': false },
+        { 'name': 'pebbles', 'age': 56, 'active': true },
+        { 'name': 'fred', 'age': 63,   'active': false },
     ];
 
-    let $barney = _.findIndex(users, function(u) { return u.user == 'barney'; });
+    let $barney = _.findIndex(
+        users,
+        function(u) {
+            return u.name == 'pebbles';
+        })
+    ;
 
     console.log('$barney', $barney)
 
@@ -27,15 +32,19 @@
 
     console.log('$activeUsers', $activeUsers)
 
-    let $desUsers = _.sortBy(users, [function(o) { return o.user; }]);
+    let $oldUsers = _.filter(users, function(u) { return u.age >= 55; }); // Tìm phần tử trong mảng có 'active' == 'false'
+    console.log('$oldUsers', $oldUsers)
+
+    let $desUsers = _.sortBy(users, [function(o) { return o.name; }]);
     console.log('$desUsers', $desUsers)
 
-    let $desUserAges = _.sortBy(users, ['user', 'age']);
+    let $desUserAges = _.sortBy(users, ['age', 'name']);
     console.log('$desUserAges', $desUserAges)
 
     console.log('------------------------');
 
     users = {
+        'julie':  { 'age': 36, 'active': true },
         'barney':  { 'age': 36, 'active': true },
         'fred':    { 'age': 40, 'active': false },
         'pebbles': { 'age': 1,  'active': true }

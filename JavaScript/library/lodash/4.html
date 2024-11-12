@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lodash Usage</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+</head>
+<body>
+<div id="output"></div>
+
+<script>
+
+    let users = [
+        { 'id': 1, 'name': 'barney', 'age': 36, 'active': false },
+        { 'id': 2, 'name': 'barney', 'age': 22, 'active': true },
+        { 'id': 3, 'name': 'barney', 'age': 34, 'active': false },
+        { 'id': 4, 'name': 'pebbles', 'age': 56, 'active': true },
+        { 'id': 5, 'name': 'fred', 'age': 63,   'active': false },
+    ];
+
+    // Load lodash.min.js first
+    const filter1 = _.reject(users, u =>  !u.active && u.age == 36);
+    console.log('filteredUsers', filter1);
+
+    const filter2 = _.reject(users, {'active': false, 'age': 34} );
+    console.log('filter2', filter2);
+
+
+    // Use of _.orderBy() method
+    // Sort by `name` in ascending order
+    // and by `age` in descending order
+
+    let sorted_array =
+        _.orderBy(
+            users,
+            ['name', 'age'],
+            ['asc', 'desc']
+        );
+
+    // Printing the output
+    console.log(sorted_array);
+
+</script>
+</body>
+</html>

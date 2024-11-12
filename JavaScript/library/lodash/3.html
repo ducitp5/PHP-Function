@@ -11,21 +11,24 @@
 
 <script>
 
-    var object = { 'a': { 'b': 2 } };
-    var other = _.create({ 'a': _.create({ 'b': 2 }) });
+    // var object = { 'a': { 'b': 2, 'c': { 'd':3 } } };
+    // var other = _.create({ 'a': _.create({ 'b': 2 }) });
+    // console.log(other, object)
+    // console.log(4, _.has(other, 'a'));
 
-    console.log(1, _.has(object, 'a'));
-    console.log(1, _.has(object, 'b'));
+    let $obc = {'c1' : 'CC', 'c2': {'c21' : 'CCC'}}
+    let $ob1 = { 'a': 1, 'b': 2 , 'c': $obc };
 
-    console.log(2, _.has(object, 'a.b'));
+    console.log(1, _.has($ob1, 'a'));
+    console.log(1, _.has($ob1, 'c'));
+
+    console.log(2, _.has($ob1, 'c.c2'));
     // => true
+    console.log(23, _.has($ob1, ['a']));
+    console.log(23, _.has($ob1, ['a', 'b']));
 
-    console.log(3, _.has(object, ['a', 'b']));
-    // => true
-
-    console.log(other, object)
-    console.log(4, _.has(other, 'a'));
-    // => false
+    console.log(3, _.has($ob1, ['c', 'c2']));
+    console.log(34, _.has($ob1, ['c', 'c2', 'c21']));
 
 </script>
 </body>
