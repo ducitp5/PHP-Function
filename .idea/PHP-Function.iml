@@ -12,5 +12,6 @@
     <orderEntry type="library" name="react-dom" level="application" />
     <orderEntry type="library" name="@babel/standalone" level="application" />
     <orderEntry type="library" name="react-router-dom" level="application" />
+    <orderEntry type="library" name="lodash" level="application" />
   </component>
 </module>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD with JSON Server</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #posts { margin-top: 20px; }
+        #posts li { margin: 10px 0; }
+        .actions button { margin-left: 5px; }
+        form { margin-top: 20px; }
+    </style>
+</head>
+<body>
+<h1>CRUD with JSON Server</h1>
+
+<!-- List of Posts -->
+<ul id="posts"></ul>
+
+<!-- Form to Add/Edit Posts -->
+<form id="postForm">
+    <input type="hidden" id="postId" />
+    <input type="text" id="postTitle" placeholder="Enter post title" required />
+    <input type="text" id="postDescription" placeholder="Enter post description" required />
+    <button type="submit">Save Post</button>
+</form>
+
+<script>
+    const postsList = document.getElementById('posts');
+    const postForm = document.getElementById('postForm');
+    const postTitleInput = document.getElementById('postTitle');
+    const postDescriptionInput = document.getElementById('postDescription');
+    const postIdInput = document.getElementById('postId');
+    const API_URL = 'http://localhost:3002/posts';
+
+    // Fetch and display posts
+    function fetchPosts() {
+        fetch(API_URL)
+            .then(response => response.json())
+            .then(data => {
+                postsList.innerHTML = '';
+                data.forEach(post => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+              <strong>${post.title}</strong><br>
+              <em>${post.description}</em>
+              <span class="actions">
+                <button onclick="editPost(${post.id}, '${post.title}', '${post.description}')">Edit</button>
+                <button onclick="deletePost(${post.id})">Delete</button>
+              </span>
+            `;
+                    postsList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching posts:', error));
+    }
+
+    // Add or update a post
+    postForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const postId = postIdInput.value;
+        const postTitle = postTitleInput.value;
+        const postDescription = postDescriptionInput.value;
+
+        if (postId) {
+            // Update post
+            fetch(`${API_URL}/${postId}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title: postTitle, description: postDescription })
+            })
+                .then(response => response.json())
+                .then(() => {
+                    fetchPosts();
+                    postForm.reset();
+                });
+        } else {
+            // Create new post
+            fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title: postTitle, description: postDescription })
+            })
+                .then(response => response.json())
+                .then(() => {
+                    fetchPosts();
+                    postForm.reset();
+                });
+        }
+    });
+
+    // Edit a post
+    function editPost(id, title, description) {
+        postIdInput.value = id;
+        postTitleInput.value = title;
+        postDescriptionInput.value = description;
+    }
+
+    // Delete a post
+    function deletePost(id) {
+        fetch(`${API_URL}/${id}`, { method: 'DELETE' })
+            .then(response => response.json())
+            .then(() => fetchPosts())
+            .catch(error => console.error('Error deleting post:', error));
+    }
+
+    // Initial fetch to display posts
+    fetchPosts();
+</script>
+</body>
+</html>
