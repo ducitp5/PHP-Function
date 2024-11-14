@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function sayHello(a = 'def') {
+        console.log("sayHello() Named Functions! - " +a );
+    }
+    sayHello(); // Output: Hello!
+
+    console.log(new sayHello('bb'));
+
+    const greet = function() {
+        console.log("greet() Anonymous Functions!");
+    };
+    greet(); // Output: Hello!
+
+    const add = (a, b) => { return a + b };
+    console.log('. Arrow Functions ', add(2, 3)); // Output: 5
+
+    (
+        function() {
+            console.log("IIFE - Immediately Invoked Function Expressions");
+        }
+    )(); // Output: IIFE
+
+    function* generateNumbers() {
+        yield 1;
+        yield 2;
+        yield 3;
+    }
+    const gen = generateNumbers();
+    console.log('generateNumbers - ', gen.next().value); // Output: 1
+
+    async function fetchData() {
+        const response = await fetch('http://localhost:3001/posts');
+        const data = await response.json();
+        console.log('async - ',data)
+        return data;
+    }
+    // I want, when run this file.html, it run automatic
+    // json-server --watch db.json --port 3001
+    // here server select a available port , and set the correspond in the fetch('http://localhost:3001/posts')
+    console.log('async function - ', fetchData());
+
+    function Person(name) {
+        this.name = name;
+        console.log('Person() - ', name);
+    }
+    const person = new Person("Alice");
+    console.log('Constructor Functions', person); // Output: Alice
+
+</script>
+
+</body>
+</html>
