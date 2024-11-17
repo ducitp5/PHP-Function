@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+<script>
+
+    var obj1 = { a: 1 };
+    Object.prototype.hello = function (){ return 'heee'; }
+
+    var obj2 = Object.create(obj1);
+
+    obj2.b = 2;
+    console.log(obj1, obj1.hello()); // 1
+    console.log(obj2); // 1
+    Object.prototype.hello = 'heee';
+
+    let $user = {
+        name : 'duc',
+        age : 30,
+        1 : 'haha',
+    }
+
+    let $user2 = Object.create($user);
+    $user2.c = "CC";
+
+    console.log('$user', $user)
+    console.log('$user2', $user2)
+
+</script>
+
+</body>
+</html>

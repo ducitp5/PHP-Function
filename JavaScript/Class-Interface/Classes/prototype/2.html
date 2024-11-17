@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+<script>
+
+    function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.friends = [];
+    }
+
+    Person.prototype.showFullName = function() {
+        console.log(this.firstName + ' ' + this.lastName);
+    }
+
+    Person.prototype.addFriend = function(friend) {
+        this.friends.push(friend);
+    }
+
+
+    var vancanh = new Person('Canh', 'Dinh');
+    var justin = new Person('Justin', 'Vo');
+    var micheal = new Person('Micheal', 'Huynh');
+
+    console.log(vancanh); // [];
+    vancanh.addFriend(justin);
+    vancanh.addFriend(micheal);
+    // console.log(vancanh.friends); // [Person, Person]
+
+
+</script>
+
+</body>
+</html>

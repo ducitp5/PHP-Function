@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+<script>
+
+    class Logger {
+        log(message) {
+            console.log(`[LOG]: ${message}`);
+        }
+    }
+
+    // utils/Calculator.js
+    class Calculator {
+        add(a, b) {
+            return a + b;
+        }
+        subtract(a, b) {
+            return a - b;
+        }
+    }
+
+    class App {
+        a = 'AA';
+        constructor(a = 'A') {
+            // this.a = a;
+            this.logger = new Logger();
+            this.calculator = new Calculator();
+        }
+
+        hello = function (){
+            console.log('helllo')
+        }
+
+        run() {
+            this.logger.log("App is running!");
+            console.log("Sum:", this.calculator.add(10, 5));
+        }
+    }
+
+    const loggerTrait = {
+        loggerTrait(message) {
+            console.log(`[LOG]: ${message}`);
+        },
+    };
+
+    console.log('App', App)
+
+    const app = new App();
+
+    console.log('app', app)
+
+    Object.assign(App, loggerTrait);
+
+    let $app2 = new App();
+    console.log('$app2', $app2)
+</script>
+
+</body>
+</html>

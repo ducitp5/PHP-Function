@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+<script>
+
+    // Create Target Object
+    const $target = {
+        a: "A",
+        b: "B",
+    };
+
+    // Create Source Object
+    const $source = {
+        a: "AA",
+        c: "CC"
+    };
+
+    // Assign Source to Target
+    let $t = Object.assign($target, $source);
+    $t.d = "DD";
+
+    console.log('$target', $target)
+    console.log('$source', $source)
+    console.log('$t', $t)
+
+
+    const loggerMixin = {
+        logInfo(message) {
+            console.log(`INFO: ${message}`);
+        },
+        logError(message) {
+            console.error(`ERROR: ${message}`);
+        },
+    };
+
+    class App {
+        constructor() {
+            Object.assign(this, loggerMixin); // Mixin methods into the class instance
+        }
+
+        appFunction = function (){
+            console.log('appFunction')
+        }
+    }
+
+    const app = new App();
+
+    console.log('loggerMixin', loggerMixin)
+    console.log('app', app)
+
+</script>
+
+</body>
+</html>
