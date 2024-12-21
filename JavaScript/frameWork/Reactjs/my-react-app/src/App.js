@@ -10,6 +10,7 @@ import RouterExamples, {RouterExamples2} from "./pages/Router-examples";
 import Memo from "./components/memo/Memo";
 import useMemo from "./components/memo/useMemo";
 import UseMemo from "./components/memo/useMemo2";
+import PersonList from "./components/PersonList";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
 
             {showCpn ? $Cpn : null}
 
+            <PersonList />
             {/*<App2 />*/}
             {/*<Game />*/} {/* dang ko chay duoc*/}
             {/*<FoodFormWithProvider />*/}
