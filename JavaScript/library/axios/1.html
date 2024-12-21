@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+<div id="root"> hello 333</div>
+
+<script type="text/babel">
+
+    class PersonList extends React.Component {
+        state = {
+            persons: []
+        }
+
+        componentDidMount() {
+            let $promise = axios.get(`http://localhost:5000/api/users`)
+
+            console.log('ppp', $promise)
+
+            $promise.then(
+                res => {
+                    console.log(1111, res);
+                    const persons = res.data;
+                    this.setState({ persons });
+                }
+            )
+            .catch(error => console.log(error));
+        }
+
+        render() {
+            return (
+                <ul>
+                    {
+                        this.state.persons.map(
+                            person => <li key={person.id}> {person.name} </li>
+                        )
+                    }
+                </ul>
+            )
+        }
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<PersonList />);
+
+</script>
+</body>
+</html>

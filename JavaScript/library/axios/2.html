@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+<div id="root"> hello 333</div>
+
+<script type="text/babel">
+
+    let { useState, useEffect } = React;
+
+    const UserList = () => {
+        const [users, setUsers] = useState([]); // Displayed users
+        const [filters, setFilters] = useState({ username: '', email: '' }); // Filter inputs
+        const [error, setError] = useState(null); // Error handling
+        const [noUsers, setNoUsers] = useState(false); // Flag for no users found
+
+        // Fetch all users
+        const fetchUsers = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/users');
+                setUsers(response.data); // Update users state with fetched data
+                setNoUsers(response.data.length === 0); // Check if no users are found
+            } catch (err) {
+                setError(err.response ? err.response.data.error : 'Error fetching users.');
+            }
+        };
+
+        // Query users based on filters
+        const queryUsers = async (params = {}) => {
+            try {
+                console.log('query-params 2', params);
+                const response = await axios.get('http://localhost:5000/api/query-users', {
+                    params, // Send filters as query parameters
+                });
+                setUsers(response.data); // Update users state with fetched data
+                setNoUsers(response.data.length === 0); // Check if no users are found
+            } catch (err) {
+                setError(err.response ? err.response.data.error : 'Error fetching users.');
+            }
+        };
+
+        // Fetch all users on initial load
+        useEffect(() => {
+            fetchUsers();
+        }, []);
+
+        const handleChange = (e) => {
+            const { name, value } = e.target;
+            setFilters({ ...filters, [name]: value });
+        };
+
+        const handleSubmit = (e) => {
+            e.preventDefault();
+            setError(null); // Reset error state
+            queryUsers(filters); // Fetch users with filters
+        };
+
+        return (
+            <div>
+                <h1>Users</h1>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        Filter by Username 2:
+                        <input
+                            type="text"
+                            name="username"
+                            value={filters.username}
+                            onChange={handleChange}
+                            placeholder="Enter username"
+                        />
+                    </label>
+                    <br />
+                    <label>
+                        Filter by Email:
+                        <input
+                            type="email"
+                            name="email"
+                            value={filters.email}
+                            onChange={handleChange}
+                            placeholder="Enter email"
+                        />
+                    </label>
+                    <br />
+                    <button type="submit">Search</button>
+                </form>
+
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+                {noUsers ? (
+                    <p>No users matched your query.</p>
+                ) : (
+                    <ul>
+                        {users.map((user) => (
+                            <li key={user.id}>
+                                {user.name} ({user.user_name}, {user.email})
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+        );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<UserList />);
+
+</script>
+</body>
+</html>
